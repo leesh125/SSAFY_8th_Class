@@ -1,0 +1,9 @@
+● HTML : 문서 구조화
+  ○ HTML5
+    - MarkUp 
+      - Semantic Tag : header, footer, main, aside, nav..
+      - Media Tag : audio, video
+      - Form Tag : 다양한 input 요소지원, 유효성 체크 지원
+
+    - API
+      - JS API : Storage, WebSocket
