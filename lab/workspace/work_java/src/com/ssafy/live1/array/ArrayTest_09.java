@@ -6,11 +6,11 @@ public class ArrayTest_09 {
         int[] scores = {90, 80, 100};
 
         // TODO: 95점을 추가로 관리하기 부적절한 코드는?
-        // scores[3] = 95;                             // #1
+        // scores[3] = 95;                             // #1 <- 이거(오버플로우)
 
-        // scores = new int[] {90, 80, 100, 95};       // #2
+        // scores = new int[] {90, 80, 100, 95};       // #2 
 
-        // scores = {90, 80,100, 95 };                 // #3
+        // scores = {90, 80,100, 95 };                 // #3 <- 이거
 
         // scores = Arrays.copyOf(scores, 5);             // #4
         // scores[3]=95;

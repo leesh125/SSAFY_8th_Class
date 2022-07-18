@@ -12,6 +12,7 @@ public class ArrayTest_06 {
         String[] strs = {"S", "S", "A", "F", "Y"};
 
         boolean[] bools;
-        bools={true,false,false};
+        // bools={true,false,false};
+        bools=new boolean[]{true,false,false};
     }
 }
