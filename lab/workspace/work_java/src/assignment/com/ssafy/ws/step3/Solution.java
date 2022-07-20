@@ -22,9 +22,9 @@ public class Solution {
 	static int countHeight(char[][] map, int row, int col) {
 		int heightSum = 0;
 		for(int i = 0; i < N; i++) {
-			heightSum += map[i][col];
+			if(map[i][col] == 'B') heightSum++;
+			if(map[row][i] == 'B') heightSum++;
 		}
-		heightSum += Collections.frequency(Arrays.asList(map[row]), "B");
 		if(map[row][col] == 'B') heightSum--;
 		return heightSum;
 	}
@@ -44,29 +44,26 @@ public class Solution {
 				}
 			}
 			
+			max = 0;
 			for(int i=0; i<N; i++) {
 				for(int j=0; j<N; j++) {
-					cnt = 0; tmp = 0;  flag = false;
+					cnt = 0; tmp = 0;  flag = true;
 					for(int k=0; k<8; k++) {
-						int nx = i + dx[i];
-						int ny = i + dy[i];
+						int nx = i + dx[k];
+						int ny = j + dy[k];
 						
 						if(nx < 0 || nx >= N || ny < 0 || ny >= N) continue;
-						if(map[i][j] == 'G') {
+						if(map[nx][ny] == 'G') {
+							flag = false;
 							cnt = 2;
 							break;
 						}
-						if(k == 7) {
-							flag = true;
-							tmp_x = i;
-							tmp_y = j;
-						}
 					}
 					if(flag) {
-						tmp = countHeight(map, tmp_x, tmp_y);
+						tmp = countHeight(map, i, j);
 						cnt = cnt < tmp ? tmp : cnt;
 					}
-					max = max < cnt ? cnt: max;
+					max = max < cnt ? cnt : max;
 				}
 			}
 			
