@@ -1,6 +1,7 @@
 package week2.day_0720;
 
 public class Person {
+	static int num;
 	String name;
 	int age;
 	
@@ -19,15 +20,17 @@ public class Person {
 	}
 	
 	{ // Instance Initializer(객체 초기화자)
-		System.out.println("init...");
+		//System.out.println("init...");
+		
 	}
 
-	Person increaseAge() {
+	public Person increaseAge() {
 		this.age++;
 		return this;
 	}
 	
 	void printInfo() {
-		System.out.println(name + "," + age);
+		num++;
+		System.out.println(num + "," + name + "," + age);
 	}
 }
