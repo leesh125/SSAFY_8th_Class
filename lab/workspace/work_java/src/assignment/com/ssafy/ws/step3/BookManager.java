@@ -64,4 +64,54 @@ public class BookManager {
 		return null;
 	}
 	
+	public Book[] searchByTitle(String title) {
+		Book[] searchBooks = new Book[size];
+		int tmpIdx = 0;
+		for(int i=0; i<size; i++) {
+			if(books[i].getTitle().contains(title)) {
+				Book copiedBook = new Book(books[i]);
+				searchBooks[tmpIdx++] = copiedBook; // 깊은 복사 해보기
+			}
+		}
+		return searchBooks;
+	}
+	
+	public Magazine[] getMagazines() {
+		Magazine[] magazines = new Magazine[size];
+		int tmpIdx = 0;
+		for(Book book: books) {
+			if(book == null) break;
+			if(book instanceof Magazine) {
+				magazines[tmpIdx++] = (Magazine) book;
+			}
+		}
+		return magazines;
+	}
+	
+	public Book[] getBooks() {
+		Book[] tmpBooks= new Book[size];
+		int tmpIdx = 0;
+		for(Book book: books) {
+			if(book == null) break;
+			if(!(book instanceof Magazine)) {
+				tmpBooks[tmpIdx++] = book;
+			}
+		}
+		return tmpBooks;
+	}
+	
+	public int getTotalPrice() {
+		int sum = 0;
+		for(Book book: books) {
+			if(book == null) break;
+			sum += book.getPrice();
+		}
+		return sum;
+	}
+	
+	public double getPriceAvg() {
+		int sum = getTotalPrice();
+		return (sum * 1.0)/ size;
+	}
+	
 }

@@ -10,6 +10,15 @@ public class Book {
 	
 	public Book() {	}
 
+	public Book(Book book) {
+		this.isbn = book.isbn;
+		this.title = book.title;
+		this.author = book.author;
+		this.publisher = book.publisher;
+		this.price = book.price;
+		this.desc = book.desc;
+	}
+	
 	public Book(String isbn, String title, String author, String publisher, int price, String desc) {
 		this.isbn = isbn;
 		this.title = title;
@@ -69,7 +78,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return String.format("%.10s| %.10s| %.10s| %.10s| %-6d| %.10s", isbn,title,author,publisher,price,desc);
+		return String.format("%-10s| %-20s| %-10s| %-10s| %-6d| %-10s", isbn,title,author,publisher,price,desc);
 	}
 	
 }
