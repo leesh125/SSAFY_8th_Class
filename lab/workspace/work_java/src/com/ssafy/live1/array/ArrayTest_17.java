@@ -15,6 +15,14 @@ public class ArrayTest_17 {
         int count = 0;
         int sum = 0;
         // TODO: 각 항의 숫자 중 3의 배수의 개수와 그들의 합을 출력하시오.
+        for(int[] intArr: grid) {
+        	for(int num: intArr) {
+        		if(num % 3 == 0) {
+        			count++;
+        			sum += num;
+        		}
+        	}
+        }
         // END:
         System.out.printf("개수: %d, 총합: %d%n", count, sum);
     }
