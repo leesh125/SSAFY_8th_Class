@@ -65,12 +65,25 @@ public class BookManager {
 	}
 	
 	public Book[] searchByTitle(String title) {
-		Book[] searchBooks = new Book[size];
-		int tmpIdx = 0;
+//		Book[] searchBooks = new Book[size];
+//		int tmpIdx = 0;
+//		for(int i=0; i<size; i++) {
+//			if(books[i].getTitle().contains(title)) {
+//				Book copiedBook = new Book(books[i]);
+//				searchBooks[tmpIdx++] = copiedBook; // 깊은 복사 해보기
+//			}
+//		}
+//		return searchBooks;
+		int idx = 0, count = 0;
 		for(int i=0; i<size; i++) {
 			if(books[i].getTitle().contains(title)) {
-				Book copiedBook = new Book(books[i]);
-				searchBooks[tmpIdx++] = copiedBook; // 깊은 복사 해보기
+				count++;
+			}
+		}
+		Book[] searchBooks = new Book[count];
+		for(int i = 0; i<size; i++) {
+			if(books[i].getTitle().contains(title)) {
+				searchBooks[idx++] = books[i];
 			}
 		}
 		return searchBooks;
