@@ -5,6 +5,12 @@ public class SpiderMan extends Person{
 	boolean isSpider;
 	Spider spider = new Spider();
 	
+	public SpiderMan() {}
+
+	public SpiderMan(String name) {
+		super(name);
+	}
+
 	public SpiderMan(String name, boolean isSpider) {
 		// this() or super()가 올 수 있는데 아무것도 없으면 누가 생략?
 		super(name);

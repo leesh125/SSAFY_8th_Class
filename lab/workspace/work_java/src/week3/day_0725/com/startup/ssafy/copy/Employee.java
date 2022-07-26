@@ -1,4 +1,4 @@
-package week2.day_0725.com.startup.ssafy.copy;
+package week3.day_0725.com.startup.ssafy.copy;
 
 public class Employee {
 	String name;

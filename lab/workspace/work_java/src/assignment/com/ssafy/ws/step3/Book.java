@@ -78,7 +78,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return String.format("%-10s| %-20s| %-10s| %-10s| %-6d| %-10s", isbn,title,author,publisher,price,desc);
+		return String.format("%.10s| %.20s| %.10s| %.10s| %6d| %.10s", isbn,title,author,publisher,price,desc);
 	}
 	
 }

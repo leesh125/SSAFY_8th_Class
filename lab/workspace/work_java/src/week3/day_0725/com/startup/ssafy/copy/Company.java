@@ -1,4 +1,4 @@
-package week2.day_0725.com.startup.ssafy.copy;
+package week3.day_0725.com.startup.ssafy.copy;
 
 // 디자인 패턴 : 설계 패턴(설계 레시피)
 // 				 싱글톤 디자인 패턴 : 객체를 1개만 유지하도록 하는 패턴

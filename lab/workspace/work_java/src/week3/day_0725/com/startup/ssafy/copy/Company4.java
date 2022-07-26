@@ -1,4 +1,4 @@
-package week2.day_0725.com.startup.ssafy.copy;
+package week3.day_0725.com.startup.ssafy.copy;
 
 // 디자인 패턴 : 설계 패턴(설계 레시피)
 // 				 싱글톤 디자인 패턴 : 객체를 1개만 유지하도록 하는 패턴
@@ -10,16 +10,20 @@ package week2.day_0725.com.startup.ssafy.copy;
 // 3. 객체 생성 판단 여부 부분에서 multi threading시 자원공유 문자게 발생하므로 동기화 처리
 
 // 장점 : lazy loading and multi thread unsafe
-public class Company3 {
+public class Company4 {
 	private String name;
 	
-	private static Company3 instance; // Company.instance = null;
+	private static Company4 instance; // Company.instance = null;
 	
-	private Company3() {}
+	private Company4() {}
 
-	public static synchronized Company3 getInstance() {
+	public static Company4 getInstance() {
 		if(instance == null) {
-			instance = new Company3();
+			synchronized(Company4.class) {
+				if(instance == null) {
+					instance = new Company4();
+				}
+			} // release key
 		}
 		return instance;
 	}

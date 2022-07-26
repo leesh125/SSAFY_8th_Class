@@ -2,11 +2,23 @@ package assignment.com.ssafy.ws.step3;
 
 import java.util.Arrays;
 
-public class BookManager {
+public class BookManagerImpl implements IBookManager {
 	private static final int MAX_SIZE = 100;
 	private Book[] books = new Book[MAX_SIZE];
 	private int size = 0; // 현재 책의 갯수
 	
+	private static BookManagerImpl bookManagerImpl;
+	
+	private BookManagerImpl() {}
+	
+	public static synchronized BookManagerImpl getBookManagerImpl() {
+		if(bookManagerImpl == null) {
+			bookManagerImpl = new BookManagerImpl(); 
+		}
+		return bookManagerImpl;
+	}
+
+	@Override
 	public void add(Book book) {
 		if(size < MAX_SIZE) {
 			books[size++] = book;
@@ -15,6 +27,7 @@ public class BookManager {
 		}
 	}
 	
+	@Override
 	public void remove(String isbn) {
 //		if(size <= 0) {
 //			System.out.println("책장이 비어있습니다.");
@@ -50,11 +63,13 @@ public class BookManager {
 		}
 	}
 	
+	@Override
 	public Book[] getList() {
 //		return books;
 		return Arrays.copyOfRange(books, 0, size);
 	}
 	
+	@Override
 	public Book searchByIsbn(String isbn) {
 		for(int i=0; i<size; i++) {
 			if(books[i].getIsbn().equals(isbn)) {
@@ -64,6 +79,7 @@ public class BookManager {
 		return null;
 	}
 	
+	@Override
 	public Book[] searchByTitle(String title) {
 //		Book[] searchBooks = new Book[size];
 //		int tmpIdx = 0;
@@ -89,6 +105,7 @@ public class BookManager {
 		return searchBooks;
 	}
 	
+	@Override
 	public Magazine[] getMagazines() {
 		Magazine[] magazines = new Magazine[size];
 		int tmpIdx = 0;
@@ -101,6 +118,7 @@ public class BookManager {
 		return magazines;
 	}
 	
+	@Override
 	public Book[] getBooks() {
 		Book[] tmpBooks= new Book[size];
 		int tmpIdx = 0;
@@ -113,6 +131,7 @@ public class BookManager {
 		return tmpBooks;
 	}
 	
+	@Override
 	public int getTotalPrice() {
 		int sum = 0;
 		for(Book book: books) {
@@ -122,6 +141,7 @@ public class BookManager {
 		return sum;
 	}
 	
+	@Override
 	public double getPriceAvg() {
 		int sum = getTotalPrice();
 		return (sum * 1.0)/ size;

@@ -8,7 +8,7 @@ public class BookTest {
 //		Scanner sc = new Scanner(System.in);
 //		System.out.println("*********************************도서메뉴*********************************");
 		
-		BookManager bm = new BookManager();
+		IBookManager bm = BookManagerImpl.getBookManagerImpl();
 		bm.add(new Book("21424", "Java Pro", "김하나", "jaen.kr", 15000, "Java 기본 문법"));
 		bm.add(new Book("21425", "Java Pro2", "김하나", "jaen.kr", 25000, "Java 응용"));
 		bm.add(new Book("35355", "분석설계", "소나무", "jaen.kr", 30000, "SW 모델링"));

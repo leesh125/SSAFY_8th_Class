@@ -1,4 +1,4 @@
-package week2.day_0725.com.startup.ssafy.copy;
+package week3.day_0725.com.startup.ssafy.copy;
 
 // 상속 : 부모를 확장하여 새로운 내용을 덧붙이거나 기존내용을 변경하는 것
 public class Engineer extends Employee
