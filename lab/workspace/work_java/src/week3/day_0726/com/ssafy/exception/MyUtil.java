@@ -1,4 +1,4 @@
-package week3.day_0726_oop3.com.ssafy.exception;
+package week3.day_0726.com.ssafy.exception;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -37,7 +37,7 @@ public class MyUtil {
 		String log = null;
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader("log2.txt"));
+			br = new BufferedReader(new FileReader("log.txt"));
 			log = br.readLine();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -56,8 +56,10 @@ public class MyUtil {
 		return log;
 	}
 	
-	public static int division(int a, int b) {
-		
+	public static int division(int a, int b) throws InvalidValueException {
+		if(b==0) {
+			throw new InvalidValueException(b);
+		}
 		int result = a/b;
 		return result;
 	}

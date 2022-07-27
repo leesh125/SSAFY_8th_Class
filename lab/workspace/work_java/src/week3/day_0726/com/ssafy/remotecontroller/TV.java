@@ -1,4 +1,4 @@
-package week3.day_0726_oop3.com.ssafy.remotecontroller;
+package week3.day_0726.com.ssafy.remotecontroller;
 
 public class TV extends ElectronicProductImpl{
 

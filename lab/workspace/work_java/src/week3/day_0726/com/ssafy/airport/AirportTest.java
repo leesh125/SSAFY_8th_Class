@@ -1,4 +1,4 @@
-package week3.day_0726_oop3.com.ssafy.airport;
+package week3.day_0726.com.ssafy.airport;
 
 public class AirportTest {
 

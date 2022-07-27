@@ -1,10 +1,10 @@
-package week3.day_0726_oop3.com.ssafy.exception;
+package week3.day_0726.com.ssafy.exception;
 
 import java.io.IOException;
 
 public class ExceptionTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidValueException {
 		
 		System.out.println(MyUtil.readLog());
 		
@@ -13,10 +13,15 @@ public class ExceptionTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println(MyUtil.division(10, 2));
+		try {
+			System.out.println(MyUtil.division(10, 0));
+		} catch (InvalidValueException e) {
+			e.printStackTrace();
+		}
 		System.out.println(MyUtil.division(10, 3));
 		System.out.println("main end ----------------");
 		MyUtil.readLog();
+		
 	}
 
 }
