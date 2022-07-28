@@ -1,5 +1,7 @@
 package assignment.com.ssafy.ws.step3;
 
+import java.util.Objects;
+
 public class Book {
 	private String isbn;
 	private String title;
@@ -7,6 +9,7 @@ public class Book {
 	private String publisher;
 	private int price;
 	private String desc;
+	private int quantity;
 	
 	public Book() {	}
 
@@ -19,15 +22,17 @@ public class Book {
 		this.desc = book.desc;
 	}
 	
-	public Book(String isbn, String title, String author, String publisher, int price, String desc) {
+	public Book(String isbn, String title, String author, String publisher, int price, String desc, int quantity) {
+		super();
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
 		this.price = price;
 		this.desc = desc;
+		this.quantity = quantity;
 	}
-	
+
 	public String getIsbn() {
 		return isbn;
 	}
@@ -75,10 +80,38 @@ public class Book {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+	
+
+	public int getQuantity() {
+		return quantity;
+	}
+	
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
 	@Override
 	public String toString() {
-		return String.format("%.10s| %.20s| %.10s| %.10s| %6d| %.10s", isbn,title,author,publisher,price,desc);
+		return String.format("%.10s| %.20s| %.10s| %.10s| %6d| %.10s| %6d", isbn,title,author,publisher,price,desc,quantity);
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(isbn);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Book other = (Book) obj;
+		return Objects.equals(isbn, other.isbn);
+	}
+	
+	
 	
 }

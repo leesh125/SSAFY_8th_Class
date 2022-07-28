@@ -147,4 +147,42 @@ public class BookManagerImpl implements IBookManager {
 		return (sum * 1.0)/ size;
 	}
 	
+	@Override
+	public void sell(String isbn, int quantity) throws ISBNNotFoundException, QuantityException {
+		if(isExist(isbn)) {
+			for(Book book : books) {
+				if(book != null && book.getIsbn().equals(isbn)) {
+					int afterSell = book.getQuantity() - quantity;
+					if(afterSell < 0) {
+						throw new QuantityException();
+					}else {
+						book.setQuantity(afterSell);						
+					}
+				}
+			}
+		}else {
+			throw new ISBNNotFoundException(isbn);
+		}
+	}
+	
+	@Override
+	public void buy(String isbn, int quantity) throws ISBNNotFoundException {
+		if(isExist(isbn)) {
+			for(Book book : books) {
+				if(book != null && book.getIsbn().equals(isbn)) {
+					book.setQuantity(book.getQuantity() + quantity);
+				}
+			}
+		}else {
+			throw new ISBNNotFoundException(isbn);
+		}
+	}
+	
+	public boolean isExist(String isbn) {
+		for(Book book: books) {
+			if(book != null && book.getIsbn().equals(isbn)) return true;
+		}
+		return false;
+	}
+	
 }

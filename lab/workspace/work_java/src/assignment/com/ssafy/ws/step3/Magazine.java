@@ -11,10 +11,11 @@ public class Magazine extends Book{
 		this.month = month;
 	}
 
-	public Magazine(String isbn, String title, String author, String publisher, int price, String desc,int year, int month) {
-		super(isbn, title, author, publisher, price, desc);
+	public Magazine(String isbn, String title, String author, String publisher, int price, String desc,int year, int month, int quantity) {
+		super(isbn, title, author, publisher, price, desc, quantity);
 		this.year = year;
 		this.month = month;
+		
 	}
 
 
