@@ -26,7 +26,7 @@ public class SimpleInputTest {
     @SuppressWarnings("unused")
     private void read2() {
         byte[] buffer = new byte[10];
-        try (InputStream input = new ByteArrayInputStream(data1.getBytes())) {
+        try (InputStream input = new ByteArrayInputStream(data2.getBytes())) {
             int read = -1;
             while ((read = input.read(buffer)) > 0) {
                 System.out.printf("읽은 개수: %d, 문자열: %s%n", read, new String(buffer, 0, read));
@@ -40,13 +40,23 @@ public class SimpleInputTest {
     private void read3() {
         char[] buffer = new char[10];
         // TODO: CharReader를 이용해 data2를 읽고 출력하시오.
+        try (Reader input = new CharArrayReader(data2.toCharArray())) {
+        	int read = -1;
+        	while( (read = input.read(buffer)) > 0 ) {
+        		System.out.printf("읽은 개수: %d, 문자열로는 %s%n",read, new String(buffer, 0 , read));
+        	}
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         // END:
     }
 
     public static void main(String[] args) {
         SimpleInputTest ns = new SimpleInputTest();
-        ns.read1();
-        // ns.read2();
-        // ns.read3();
+//        ns.read1();
+//        ns.read2();
+         
+         ns.read3();
     }
 }
