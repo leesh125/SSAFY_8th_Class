@@ -1,0 +1,44 @@
+● I/O
+  - Stream : 데이터의 흐름, 통로
+    - 입력 Stream
+    - 출력 Stream
+
+★ 필터 스트림과 노드 스트림 구분하는 방법:
+    : 필터 스트림은 보조 스트림 단독으로 만들 수 없음
+      -> 다른 스트림이 있어야지만 (내가 만들어지는 스트림, 사용할 수 있는 스트림)이 필터 스트림
+
+● Objet in/outStream
+  - FilterStream 중 한개
+  - 객체 입/출력 지원
+  - java.io.Serializable 구현한 대상만이 객체 입/출력 가능
+  
+  ○ Serializable
+    - 메소드 선언 X
+    - Tagging interface, marking interface -> flag 역할
+
+
+● XML
+  - extensible markup language
+
+  ○ well-formed 규칙
+    1. 시작태그 - 종료태그 한쌍
+    2. 속성은 시작태그에만 올 수 있고 속성 = "값" 형태
+    3. Markup 포함관계는 가능, overlap 불가
+    4. Root element는 단 1개(반드시 존재)
+    5. 주석(<!-- -->)은 XML 선언부 이후에 등장
+    6. <, & 파싱에 위배 -> 엔티티 사용대체, CDATA Section
+
+★ 월요일 시험!!
+데이터타입, 데이터타입간의 형변환 어떻게 되는지, 
+자바가 지원하는 연산자들, 
+논리제어를 하는 반복문, 
+조건분기문,(continue, break), 
+클래스 설계, 생성자, tostring, equals hashcode 메소드, 
+객체가 생성하는 방법, this, super, this생성자 호출 super생성자 호출(this와 super콜은 공존할 수 없다, 아무런 생성자 없다면 super) 
+overloading(한클래스안에서 같은 이름의 메서드가 매개변수달리해서 여러개 정의되는 것, 부모클래스도 오버로딩 가능), 
+overriding, 배열, 참조변수의 크기 안들어 가는것, new할 때 사이즈 줘야되는것, 
+초기값 리스트를 동반하는 경우 크기 x, 배열생성에 관련된 신텍스, 
+예외처리, try catch, finally, 다형성,추상클래스, 인터페이스, 
+sax,dom 파싱(개념적인것)(startelement, getelement),(수업중에 썼던거 기억), 
+sax와 돔파싱의 차이, 입출력, 파일입출력, 지역변수는 자동초기화x, 멤버변수는 자동초기화(상속빼고), 
+초기화되지 않은 변수 쓰려면 에러, try catch finally실행결과 묻는 문제
