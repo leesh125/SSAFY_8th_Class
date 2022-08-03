@@ -1,4 +1,4 @@
-package assignment.com.ssafy.boj;
+package assignment.com.ssafy.swea;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
