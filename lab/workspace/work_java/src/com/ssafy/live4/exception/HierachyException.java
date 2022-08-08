@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class HierachyException {
     @SuppressWarnings("resource")
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String src = "./.project";
         // TODO: 상속 관계를 고려하여 다음에서 예외를 처리해보자.
         FileInputStream input = new FileInputStream(src);

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class CheckedExceptionHandling {
     @SuppressWarnings("resource")
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, FileNotFoundException, SQLException {
         // TODO: 다음에서 발생하는 예외를 처리해보자.
         Class.forName("abc.Def"); // ClassNotFoundException
         new FileInputStream("Hello.java"); // FileNotFoundException
