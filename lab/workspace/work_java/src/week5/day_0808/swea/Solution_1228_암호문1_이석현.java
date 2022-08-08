@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Solution_암호문1_이석현 {
+public class Solution_1228_암호문1_이석현 {
 
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	static LinkedList<Integer> originPass;

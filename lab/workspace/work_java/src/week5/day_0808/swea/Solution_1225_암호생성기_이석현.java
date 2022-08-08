@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Solution1225 {
+public class Solution_1225_암호생성기_이석현 {
 
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	static int[] cycle = {1,2,3,4,5};
