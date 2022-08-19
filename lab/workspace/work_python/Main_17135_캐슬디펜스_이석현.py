@@ -31,24 +31,20 @@ for c in list(combi(range(M), 3)):
                         target_distance = distance
                     elif distance == target_distance and target[1] > y:
                         target = [x,y]
-                    else:
+                    elif distance < target_distance:
                         target = [x,y]
                         target_distance = distance
             if len(target) != 0 and target not in attack_set:
                 attack_set.append(target)
-        print(attack_set)
         for attack in attack_set:
             q.remove(attack)
             cnt += 1
         new_q = []
-        print(q)
-        print()
         for i in range(len(q)):
             enemy_x, enemy_y = q[i]
             if enemy_x + 1 < N:
                 new_q.append([enemy_x+1,enemy_y])
         q = new_q
-        print(q)
-        print()
+
     ans = max(ans,cnt)
 print(ans)
