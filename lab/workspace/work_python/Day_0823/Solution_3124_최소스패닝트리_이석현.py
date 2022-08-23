@@ -1,31 +1,4 @@
 # Kruscal 알고리즘
-import sys
-input = sys.stdin.readline
-
-V,E = map(int, input().split())
-edges = []
-for _ in range(E):
-    fr, to, weight = map(int,input().split())
-    edges.append((fr,to,weight))
-edges.sort(key=lambda x:x[2])
-
-parents = [x for x in range(V+1)]
-
-
-## 다시 풀기 ^
-
-
-
-
-
-
-
-
-
-
-
-
-
 def find_set(x):
     while x != parents[x]:
         x = parents[x]
