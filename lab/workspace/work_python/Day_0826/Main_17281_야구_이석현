@@ -2,7 +2,7 @@ import sys
 from itertools import permutations
 input = sys.stdin.readline
 
-def permutaion(arr, N):
+def permutation(arr, N):
     res = []
 
     if N == 0:
@@ -10,7 +10,7 @@ def permutaion(arr, N):
 
     for i in range(len(arr)):
         elem = arr[i]
-        for rest in permutaion(arr[:i] + arr[i+1:], N-1):
+        for rest in permutation(arr[:i] + arr[i+1:], N-1):
             res.append([elem] + rest)
 
     return res
@@ -19,7 +19,7 @@ N = int(input())
 max_total = 0
 innings = [list(map(int,input().split())) for _ in range(N)]
 
-for perm in permutations(range(1,9), 8):
+for perm in permutation([1,2,3,4,5,6,7,8], 8):
     perm = list(perm[:3]) + [0] + list(perm[3:])
     total = 0
     idx = 0
