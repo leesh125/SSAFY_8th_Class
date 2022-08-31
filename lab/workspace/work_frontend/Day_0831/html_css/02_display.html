@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    span{
+      width: 100px;
+      height: 100px;
+      margin: auto;
+      background-color: rgb(198, 217, 233);
+      transition-duration: 1s;
+      line-height: 6;
+    }
+    span:hover{
+      background-color: rgb(212, 44, 22);
+      width: 200px;
+      height: 200px;
+      color: white;
+      font-size: 30px;
+      font-weight: 600;
+    }
+    div{
+      width: 300px;
+      margin: 10px;
+      border: 1px solid silver;
+    }
+  </style>
+</head>
+<body style="text-align: center; margin: auto 20%;">
+  <div>
+    <span>서울</span>
+    <span>9반</span>
+    <span>짱짱</span>
+  </div>
+  <div>
+    <span>서울</span>
+    <span id="span1" style="display: block;" onmouseover="change()" onmouseout="change()">9반</span>
+    <span>짱짱</span>
+  </div>
+  <div>
+    <span>서울</span>
+    <span id="span2" style="display: inline-block;">9반</span>
+    <span>짱짱</span>
+  </div>
+  <div>
+    <span>서울</span>
+    <span style="display: none;">9반</span>
+    <span>짱짱</span>
+  </div>
+
+<script>
+  flag = -1;
+  function change() {
+    if(flag == -1){
+      document.getElementById("span1").innerHTML = "김태희!";
+    }else{
+      document.getElementById("span1").innerHTML = "9반!";
+    }
+    flag *= -1;
+  }
+</script>
+<script>
+  var span2 = document.getElementById("span2");
+  function changeTime() {
+    var now = new Date();
+    var seconds = now.getSeconds();
+    if(seconds %2 == 0){
+      span2.innerHTML = "김태희!";
+      span2.style.backgroundColor = "aliceblue";
+      span2.style.color = "black";
+    }else{
+      span2.innerHTML = "9반!";
+      span2.style.backgroundColor = "rgb(250, 152, 143)";
+      span2.style.color = "white";
+    }
+  }
+  changeTime();
+  setInterval(changeTime, 1000);
+</script>
+</body>
+</html>

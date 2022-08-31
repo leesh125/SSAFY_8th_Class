@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.header > a {
+  text-decoration: none;
+  color: rgb(177, 125, 224);
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.header > ul {
+  display: flex;
+}
+
+.header > ul > li {
+  list-style: none;
+  padding: 7px;
+}
+
+.header > ul > li > a{
+  text-decoration: none;
+  color: rgb(151, 151, 151);
+}
+
+.center-content{
+  display: flex;
+  width: 1200px;
+  margin: auto;
+}
+
+.center-content-left{
+  flex-basis: 30%;
+}
+
+.center-content-right{
+  flex-basis: 70%;
+}
+
+.center-content-left-span {
+  height: 30%;  
+}
