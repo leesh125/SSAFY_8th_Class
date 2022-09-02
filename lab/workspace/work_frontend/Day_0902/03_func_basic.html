@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    console.log(small(10,20));
+    console.log(sum());
+    // 선언적 함수
+    // 호이스팅 : 선언부는 맨 위로 끌어올림(단, 할당은 실제 실행할 때)
+    function small(x,y) { 
+      return x<y?x:y;
+    }
+
+    const sum = function() {
+      let result = 0;
+      for (let i = 0; i < 10; i++) {
+        result += i;
+      }
+      return result;
+    }
+
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
