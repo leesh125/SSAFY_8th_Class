@@ -3,6 +3,7 @@ package com.ssafy.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,15 +37,13 @@ public class RegisterDeptServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		if(res) {
-			out.println("<html><body>");
-			out.println("<h2>등록 성공</h2>");
-			out.println("</body></html>");
-			System.out.println("등록 성공");
+			response.sendRedirect("./list.do");
+			return;
 		} else {
-			out.println("<html><body>");
-			out.println("<h2>등록 실패</h2>");
-			out.println("</body></html>");
-			System.out.println("등록 실패");
+			request.setAttribute("errorMsg", "등록에 실패하였습니다.");
+			RequestDispatcher rd = request.getRequestDispatcher("./register_form.jsp");
+			rd.forward(request, response);
+			return;
 		}
 	}
 

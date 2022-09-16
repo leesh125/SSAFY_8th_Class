@@ -19,4 +19,17 @@ public class DeptService {
 		return deptDao.selectDepts();
 	}
 
+	public Dept getDept(int deptno) {
+		// 부서 조회
+		return deptDao.selectDept(deptno);
+	}
+	
+	public boolean deleteDept(int deptno) {
+		// 부서 삭제
+		return deptDao.deleteDept(deptno);
+	}
+
+	public int updateDept(int deptno, String dname, String loc) {
+		return deptDao.updateDept(deptno, dname, loc);
+	}
 }

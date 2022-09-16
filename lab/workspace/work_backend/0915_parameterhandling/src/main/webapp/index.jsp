@@ -9,8 +9,8 @@
 <body>
 	
 	<ul>
-		<li> <a href="./dept/registerForm.jsp">부서 등록 </a></li>
-		<li>부서 목록</li>
+		<li><a href="./dept/registerForm.jsp">부서 등록 </a></li>
+		<li><a href="./dept/list.do">부서 목록 </a></li>
 	</ul>
 </body>
 </html>
