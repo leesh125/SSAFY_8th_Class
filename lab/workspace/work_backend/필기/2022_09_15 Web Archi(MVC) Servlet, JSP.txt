@@ -1,0 +1,11 @@
+● Servlet
+- 자바를 사용하여 웹페이지를 동적으로 생성하는 서버측 프로그램
+
+servlet = 자바 안에 html을 문자열로 표현
+jsp = html안에 자바 코드 작성
+
+● Servlet Life-Cycle
+- servlet calss는 main() 이 없다. 즉 객체의 생성부터 사용의 주체가 사용자가 아닌 Servlet Container(WAS)에게 있다
+  Client가 요청을 하면 ServletContainer는 Servlet 객체를 생성(한번)하고, 초기화(한번)하며 요청에 대한 처리를 하게 된다
+  또한 Servlet 객체가 필요 없게 되면 제거하는 일까지 Container가 담당하게 된다
+
