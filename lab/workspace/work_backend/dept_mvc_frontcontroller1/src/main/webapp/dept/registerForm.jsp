@@ -22,7 +22,7 @@
 			</div>
 		</c:if>
 		
-		<form method="post" action="./register.do" class="row">
+		<form method="post" action="${root}/dept/register.do" class="row">
 			<table class="table">
 				<tbody>
 					<tr>

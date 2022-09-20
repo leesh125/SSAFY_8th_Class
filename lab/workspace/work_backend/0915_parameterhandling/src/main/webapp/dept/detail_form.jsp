@@ -1,6 +1,7 @@
 <%@ page import = "com.ssafy.model.dto.Dept" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,20 +26,20 @@
 			<h4 class="bg-warning text-light text-center"><%= errorMsg %></h4>
 		</div>
 		<% } %>
-		<form method="post" action="./modify.do?deptno=<%=dept.getDeptNo() %>" class="row">
+		<form method="post" action="./modify.do?deptno=${dept.deptNo }" class="row">
 			<table class="table">
 				<tbody>
 					<tr>
 						<th><label for="deptno">부서번호</label></th>
-						<td><input type="text" name="deptno" id="deptno" value="<%=dept.getDeptNo() %>" readonly="readonly"/></td>
+						<td><input type="text" name="deptno" id="deptno" value="${dept.deptNo }" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<th><label for="dname">부서이름</label></th>
-						<td><input type="text" name="dname" id="dname" value="<%=dept.getDname() %>"/></td>
+						<td><input type="text" name="dname" id="dname" value="${dept.dname }"/></td>
 					</tr>
 					<tr>
 						<th><label for="loc">지역</label></th>
-						<td><input type="text" name="loc" id="loc" value="<%=dept.getLoc() %>"/></td>
+						<td><input type="text" name="loc" id="loc" value="${dept.loc }"/></td>
 					</tr>
 				</tbody>
 				<tfoot>

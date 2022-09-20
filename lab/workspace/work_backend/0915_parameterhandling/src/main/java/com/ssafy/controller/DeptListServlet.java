@@ -1,6 +1,7 @@
 package com.ssafy.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,11 +21,20 @@ public class DeptListServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("servlet");
-		List<Dept> depts = deptService.getDepts();
+		List<Dept> depts;
+		try {
+			depts = deptService.getDepts();
+			request.setAttribute("deptList", depts);
+			request.getRequestDispatcher("/dept/list.jsp").forward(request, response);
+			return; // 페이지 이동 후 return으로 아래 코드 실행 안되게 실수 방지
+		}  catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());
+			request.getRequestDispatcher("../error.jsp").forward(request, response);
+			return;
+		}
 		
-		request.setAttribute("deptList", depts);
-		request.getRequestDispatcher("/dept/list.jsp").forward(request, response);
-		return; // 페이지 이동 후 return으로 아래 코드 실행 안되게 실수 방지
+		
 	}
 
 	/**

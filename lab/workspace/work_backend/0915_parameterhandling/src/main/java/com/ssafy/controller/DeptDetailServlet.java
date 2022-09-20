@@ -1,6 +1,7 @@
 package com.ssafy.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,11 +25,18 @@ public class DeptDetailServlet extends HttpServlet {
 		int deptno = Integer.parseInt(request.getParameter("deptno"));
 		
 		// 2. call service
-		Dept dept = deptService.getDept(deptno);
-		
-		request.setAttribute("dept", dept);
-		request.getRequestDispatcher("./detail_form.jsp").forward(request, response);
-		return;
+		try {
+			Dept dept = deptService.getDept(deptno);
+			
+			request.setAttribute("dept", dept);
+			request.getRequestDispatcher("./detail_form.jsp").forward(request, response);
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());
+			request.getRequestDispatcher("../error.jsp").forward(request, response);
+			return;
+		}
 	}
 
 }
