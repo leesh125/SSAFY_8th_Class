@@ -7,13 +7,16 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ssafy.model.dto.Dept;
 import com.ssafy.model.dto.PageInfo;
 import com.ssafy.model.service.DeptService;
+import com.ssafy.model.service.UserService;
 
 // loadOnStartup = 서블릿 호출 없어도 서블릿이 먼저 실행된다(우선순위 기준)
 @WebServlet(loadOnStartup = 1, urlPatterns= {"*.do","*.ssafy"})
@@ -21,6 +24,7 @@ public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static DeptService deptService = new DeptService();
+	private static UserService userService = new UserService();
 	
 	@Override
 	public void init() throws ServletException {
@@ -46,6 +50,17 @@ public class MainServlet extends HttpServlet {
 		String url = request.getServletPath();
 		System.out.println("url: " + url);
 		
+		if(url.startsWith("/dept")) {
+			
+			// 로그인 상태 판단
+			HttpSession session = request.getSession();
+			if(session.getAttribute("userId") == null) {
+				System.out.println("로그인 안됨");
+				response.sendRedirect(request.getContextPath()+"/user/login.do");
+				return;
+			}
+		}
+		
 		
 		PageInfo pageInfo = null;
 		try {
@@ -59,6 +74,12 @@ public class MainServlet extends HttpServlet {
 				pageInfo = deptModify(request, response);
 			}else if(url.equals("/dept/register.do")) {
 				pageInfo = deptRegister(request, response);
+			}else if(url.equals("/user/login_form.do")) {
+				pageInfo = login(request, response);
+			}else if(url.equals("/user/logout.do")) {
+				pageInfo = logout(request, response);
+			}else {
+				pageInfo = index(request, response);
 			}
 				
 			if(pageInfo.isForward()) {
@@ -78,6 +99,7 @@ public class MainServlet extends HttpServlet {
 	}
 	
 	
+
 	protected PageInfo getDeptList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		List<Dept> depts = deptService.getDepts();
@@ -159,5 +181,61 @@ public class MainServlet extends HttpServlet {
 			request.setAttribute("errorMsg", "등록에 실패하였습니다.");
 			return new PageInfo(true, "./register_form.jsp");
 		}
+	}
+	
+	protected PageInfo login(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		// 1. get parameter
+		String userId = request.getParameter("userId");
+		String password = request.getParameter("password");
+
+		String name = userService.login(userId, password);
+		
+		if(name != null) {
+//			Cookie idCookie = new Cookie("userId", userId);
+//			Cookie nameCookie = new Cookie("userName", URLEncoder.encode(name,"utf-8"));
+//			
+//			idCookie.setPath(request.getContextPath());
+//			nameCookie.setPath(request.getContextPath());
+//			
+//
+//			response.addCookie(idCookie);
+//			response.addCookie(nameCookie);
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", userId);
+			session.setAttribute("userName", name);
+			
+			
+			return new PageInfo(false,"/dept/list.do");
+		}else {
+			request.setAttribute("errorMsg","아이디가 다릅니다.");
+			return new PageInfo(true,"/user/login.jsp");
+		}
+		
+
+	}
+	
+	protected PageInfo logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		// 1. get parameter
+//		Cookie[] cookies = request.getCookies();
+//		if(cookies != null && cookies.length>0) {
+//			for (Cookie cookie : cookies) {
+//				if(cookie.getName().equals("userId") || cookie.getName().equals("userName")) {
+//					cookie.setPath(request.getContextPath());
+//					cookie.setMaxAge(0);
+//					response.addCookie(cookie);
+//				}
+//			}
+//		}
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return new PageInfo(false,"/index.jsp");
+
+	}
+	
+
+	protected PageInfo index(HttpServletRequest request, HttpServletResponse response) {
+		return new PageInfo(true,"/index.jsp");
 	}
 }

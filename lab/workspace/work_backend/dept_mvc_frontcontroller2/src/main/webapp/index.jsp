@@ -16,6 +16,7 @@
 	<ul>
 		<li><a href="${root}/dept/registerForm.jsp">부서 등록 </a></li>
 		<li><a href="${root}/dept/list.do">부서 목록 </a></li>
+		<li><a href="${root}/dept/rest/list.do">부서 목록 - JSON </a></li>
 	</ul>
 </body>
 </html>
