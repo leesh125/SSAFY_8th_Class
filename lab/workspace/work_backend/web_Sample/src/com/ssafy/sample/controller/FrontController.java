@@ -8,14 +8,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.ssafy.sample.dto.PageInfo;
+import com.ssafy.sample.model.dto.PageInfo;
 
 @WebServlet(loadOnStartup = 1, urlPatterns= {"*.do","*.ssafy"})
 public class FrontController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private ProductController productController = new ProductController();
+	private UserController userController = new UserController();
+	private HomeController homeController = new HomeController();
 	private String root;
 	@Override
 	public void init() throws ServletException {
@@ -39,9 +42,15 @@ public class FrontController extends HttpServlet {
 		String url = request.getServletPath();
 		System.out.println("url: " + url);
 		
-		if(url.startsWith("/register")) {
+		if(url.startsWith("/product")) {
 			//** 세션 처리하기 **//
-			
+			// 로그인 상태 판단
+			HttpSession session = request.getSession();
+			if(session.getAttribute("userId") == null) {
+				System.out.println("로그인 안됨");
+				response.sendRedirect(request.getContextPath()+"/user/login.do");
+				return;
+			}
 		}
 	
 		Object result = null;
@@ -49,6 +58,10 @@ public class FrontController extends HttpServlet {
 			Controller controller = null;
 			if(url.startsWith("/product")) {
 				controller = productController;
+			}else if(url.startsWith("/user")) {
+				controller = userController;
+			} else {
+				controller = homeController;
 			}
 			
 			if(controller != null) {

@@ -5,8 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ssafy.sample.dto.PageInfo;
-import com.ssafy.sample.dto.Product;
+import com.ssafy.sample.model.dto.PageInfo;
+import com.ssafy.sample.model.dto.Product;
 import com.ssafy.sample.model.service.ProductService;
 
 public class ProductController implements Controller {

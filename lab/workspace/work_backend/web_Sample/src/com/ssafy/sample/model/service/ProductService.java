@@ -3,8 +3,8 @@ package com.ssafy.sample.model.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.ssafy.sample.dto.Product;
 import com.ssafy.sample.model.dao.ProductDAO;
+import com.ssafy.sample.model.dto.Product;
 
 public class ProductService {
 

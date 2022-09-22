@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ssafy.sample.dto.Product;
+import com.ssafy.sample.model.dto.Product;
 import com.ssafy.sample.util.DBUtil;
 
 public class ProductDAO {

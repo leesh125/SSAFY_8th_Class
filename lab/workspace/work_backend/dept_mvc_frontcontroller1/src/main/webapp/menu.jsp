@@ -3,10 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:choose>
-	<!-- <c:when test="${not empty cookie.userId.value}">
-		${cookie.userId.value}님 로그인중
-		<a href="${root}/user/logout.do"> <span class="btn btn-info">로그아웃</span></a>
-	</c:when> -->
 	<c:when test="${not empty sessionScope.userId}">
 		${userId}님 로그인중
 		<a href="${root}/user/logout.do"> <span class="btn btn-info">로그아웃</span></a>
