@@ -18,6 +18,7 @@ public class NoticeService {
 		return noticeDAO.getNotice(noticeId);
 	}
 
+<<<<<<< HEAD
 	public boolean update(String noticeId, String title, String content) throws SQLException { 
 		return noticeDAO.updateNotice(noticeId,title,content) > 0;
 	}
@@ -30,4 +31,6 @@ public class NoticeService {
 		return noticeDAO.registerNotice(title,content) > 0;
 	}
 
+=======
+>>>>>>> branch 'master' of https://github.com/leesh125/SSAFY_8th_Class
 }
