@@ -119,7 +119,15 @@ public class UserController implements Controller{
 		return new DataInfo("application/json", isUpdated);
 	}
 	
+<<<<<<< HEAD
 	private DataInfo delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+=======
+<<<<<<< HEAD
+	private DataInfo delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+=======
+	private Object delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+>>>>>>> branch 'master' of https://github.com/leesh125/SSAFY_8th_Class
+>>>>>>> refs/remotes/origin/master
 		String userId = request.getParameter("userId");
 
 		boolean isDeleted = userService.delete(userId);		

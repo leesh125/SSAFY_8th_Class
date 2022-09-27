@@ -56,9 +56,25 @@
                 type="text" class="form-control" id="writer" name="writer"
                 value="${notice.hit}" disabled>
             </div>
+<<<<<<< HEAD
+            <a href="${root}/notice/notice.do" class="btn btn-outline-secondary">글 목록</a>
+=======
+<<<<<<< HEAD
             <a href="${root}/notice/notice.do" class="btn btn-outline-secondary">글 목록</a>
             <c:if test="${userId eq 'admin'}"> 
 	            <a href="${root}/notice/noticeUpdate_form.do?noticeid=${notice.noticeId}" class="btn btn-outline-warning">수정</a>
+=======
+            <a href="${root}/notice/notice.jsp" class="btn btn-outline-secondary">글 목록</a>
+>>>>>>> refs/remotes/origin/master
+            <c:if test="${userId eq 'admin'}"> 
+<<<<<<< HEAD
+	            <a href="${root}/notice/noticeUpdate_form.do?noticeid=${notice.noticeId}" class="btn btn-outline-warning">수정</a>
+=======
+	            <a href="${root}/notice/noticeUpdate.jsp" class="btn btn-outline-warning">수정</a>
+	            <a href="${root}" class="btn btn-outline-danger"
+	              onclick="return confirm('삭제하시겠습니까?')">삭제</a>
+>>>>>>> branch 'master' of https://github.com/leesh125/SSAFY_8th_Class
+>>>>>>> refs/remotes/origin/master
             </c:if>
           </form>
         </div>
