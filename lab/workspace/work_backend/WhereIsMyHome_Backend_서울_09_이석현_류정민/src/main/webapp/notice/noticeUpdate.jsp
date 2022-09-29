@@ -34,6 +34,9 @@
                 type="text" class="form-control" id="title" name="title"
 <<<<<<< HEAD
                 value="${notice.title}">
+=======
+<<<<<<< HEAD
+                value="${notice.title}">
             </div>
             <div class="mb-3">
               <label for="title" class="form-label">작성자</label> <input
@@ -145,6 +148,7 @@
 	</script>
 =======
                 value="${notice.title}" disabled>
+>>>>>>> refs/remotes/origin/master
             </div>
             <div class="mb-3">
               <label for="title" class="form-label">작성자</label> <input
@@ -153,7 +157,7 @@
             </div>
             <div class="mb-3">
               <label for="content" class="form-label">내용</label>
-              <textarea class="form-control" id="content" name="content" disabled>
+              <textarea class="form-control" id="content" name="content">
 				${notice.content}
               </textarea>
             </div>
@@ -167,10 +171,9 @@
                 type="text" class="form-control" id="writer" name="writer"
                 value="${notice.hit}" disabled>
             </div>
-            <a href="${root}/notice/notice.jsp" class="btn btn-outline-secondary">글 목록</a> <a
-              href="${root}" class="btn btn-outline-warning" onclick="return confirm('수정하시겠습니까?')">수정하기</a>
-            <a href="${root}" class="btn btn-outline-danger"
-              onclick="return confirm('삭제하시겠습니까?')">삭제</a>
+            <a href="${root}/notice/notice.do" class="btn btn-outline-secondary">글 목록</a> 
+            <a class="btn btn-outline-warning" onclick="modify()">수정하기</a>
+            <a class="btn btn-outline-danger" onclick="deleteNotice()">삭제</a>
           </form>
         </div>
       </div>
@@ -193,20 +196,70 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-      let name = '';
-      let email = '';
-      let password = '';
-      document.querySelector("#signup-btn").addEventListener("click", function(event) {
-        event.preventDefault();
-        let signup_name = document.querySelector("#signup-name").value;
-        let signup_email = document.querySelector("#signup-email").value;
-        let signup_password = document.querySelector("#signup-password").value;
-        name = signup_name; email = signup_email; password = signup_password;
-        if(signup_name.length > 0 && signup_email.indexOf('@') != -1 && signup_password.length > 0){
-          document.getElementById("login-label").click();
-        }else{
-          alert('입력창을 제대로 입력하세요!');
+    function modify() {
+        if (confirm("공지를 수정하시겠습니까?")) {
+        	let noticeId = document.querySelector("#noticeid").value;
+            let title = document.querySelector("#title").value;
+            let content = document.querySelector("#content").value;
+             
+      	  
+      	  fetch('${root}/notice/modify.do', {
+      	      method: 'POST',
+      	      headers: {
+      	          'Content-Type': 'application/x-www-form-urlencoded'
+      	      },
+      	      body: new URLSearchParams({
+      	    	  noticeId,
+      	    	  title,
+      	    	  content
+      	        })
+      	    }).then(response =>response.json())
+      	      .then(flag => {
+      	    	  if(flag){
+      	    		  alert('공지 수정 성공');
+      	    	  }else{
+      	    		  alert('공지 수정 실패');
+      	    	  }
+	      	      window.location.href = '${root}/notice/noticeDetail.do?noticeid=${notice.noticeId}';
+      	      });
+      	  
+        } else {
+            alert("취소!");
         }
+<<<<<<< HEAD
+    }
+    
+    
+	</script>	
+	<script>
+	function deleteNotice() {
+	        if (confirm("공지를 삭제하시겠습니까?")) {
+	        	let noticeId = document.querySelector("#noticeid").value;
+	      	  
+	      	  fetch('${root}/notice/delete.do', {
+	      	      method: 'POST',
+	      	      headers: {
+	      	          'Content-Type': 'application/x-www-form-urlencoded'
+	      	      },
+	      	      body: new URLSearchParams({
+	      	    	  noticeId
+	      	        })
+	      	    }).then(response =>response.json())
+	      	      .then(flag => {
+	      	    	  if(flag){
+	      	    		  alert('공지 삭제 성공');
+	      	    	  }else{
+	      	    		  alert('공지 삭제 실패');
+	      	    	  }
+	      	    	  window.location.href = '${root}/notice/notice.do';
+	      	      });
+	      	  
+	        } else {
+	            alert("취소!");
+	        }
+	    }
+	</script>
+=======
       });
       
       document.querySelector("#login-btn").addEventListener("click", function(event) {
@@ -225,6 +278,7 @@
 
   </script>
 >>>>>>> branch 'master' of https://github.com/leesh125/SSAFY_8th_Class
+>>>>>>> refs/remotes/origin/master
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

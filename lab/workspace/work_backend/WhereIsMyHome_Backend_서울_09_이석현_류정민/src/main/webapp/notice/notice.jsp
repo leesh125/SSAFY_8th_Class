@@ -23,13 +23,21 @@
     <h2 style="text-align: center; margin-bottom: 50px;">공지사항</h2>
 <<<<<<< HEAD
     <c:if test="${userId eq 'admin'}">
+=======
+<<<<<<< HEAD
+    <c:if test="${userId eq 'admin'}">
 	    <div style="text-align: right;">
 	    	<input type="button" value="공지사항 등록" onclick="location.href='${root}/notice/registerForm.do'"/> 
 =======
     <c:if test="${usrId eq 'admin'}">
+>>>>>>> refs/remotes/origin/master
 	    <div style="text-align: right;">
+<<<<<<< HEAD
+	    	<input type="button" value="공지사항 등록" onclick="location.href='${root}/notice/registerForm.do'"/> 
+=======
 	    	<input type="button" value="공지사항 등록" onclick="location.href='${root}/notice/register.do'"/> 
 >>>>>>> branch 'master' of https://github.com/leesh125/SSAFY_8th_Class
+>>>>>>> refs/remotes/origin/master
 	    </div>
     </c:if>
     

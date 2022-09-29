@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
@@ -124,6 +127,8 @@ public class NoticeDAO {
 		}finally {
 			dbUtil.close(pstmt, conn);
 		}
+<<<<<<< HEAD
+=======
 =======
 import java.util.ArrayList;
 import java.util.List;
@@ -180,6 +185,7 @@ public class NoticeDAO {
 		}
 		return null;
 >>>>>>> branch 'master' of https://github.com/leesh125/SSAFY_8th_Class
+>>>>>>> refs/remotes/origin/master
 	}
 
 }
