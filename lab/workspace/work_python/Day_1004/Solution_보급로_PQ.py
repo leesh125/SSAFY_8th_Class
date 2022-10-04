@@ -1,0 +1,43 @@
+import heapq
+INF = float('inf')
+dr = [-1,1,0,0]
+dc = [0,0,-1,1]
+
+def dijkstra(startR, startC):
+    pq = []
+
+    # 출발지에서 자신으로의 최소 비용을 저장할 배열 생성 후 초기화
+    minCost = [[INF] * N for _ in range(N)]
+    visited = [[False] * N for _ in range(N)]
+
+    # 출발지에서 출발지로의 최소비용 0 처라
+    minCost[startR][startC] = 0
+    heapq.heappush(pq,(minCost[startR][startC],startR,startC))
+    
+    while pq:
+        r = -1; c = -1;
+        # step1. 미방문정점중 최소비용 정점 찾기
+        current = heapq.heappop(pq)
+        r = current[1]
+        c = current[2]
+        minTime = current[0]
+
+        if visited[r][c]: continue
+        
+        visited[r][c] = True
+        if r == N-1 and c == N-1: return minTime
+        
+        for i in range(4):
+            nr = r + dr[i]
+            nc = c + dc[i]
+
+            if 0<=nr<N and 0<=nc<N and not visited[nr][nc] and minCost[nr][nc] > minTime + graph[nr][nc]:
+                minCost[nr][nc] = minTime + graph[nr][nc]
+                heapq.heappush(pq,(minCost[nr][nc],nr,nc))
+    return -1
+
+for tc in range(1,int(input())+1):
+    N = int(input())
+    graph = [list(map(int,list(input().rstrip()))) for _ in range(N)]
+    print('#{0} {1}'.format(tc, dijkstra(0,0)))
+
