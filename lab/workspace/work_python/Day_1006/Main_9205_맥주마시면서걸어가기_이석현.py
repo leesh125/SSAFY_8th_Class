@@ -7,7 +7,7 @@ INF = int(1e9)
 
 for tc in range(int(input())):
     n = int(input())
-    graph = [[INF] * n for _ in range(n)]
+    graph = [[INF] * (n+2) for _ in range(n+2)]
 
     for i in range(n+2):
         graph[i][i] = 0
@@ -25,7 +25,7 @@ for tc in range(int(input())):
         for i in range(n+2):
             for j in range(n+2):
                 graph[i][j] = min(graph[i][j], graph[i][k]+graph[k][j])
-    print(graph[-1][-1])
+    print('happy' if graph[0][-1] != INF else 'sad')
     
         
     
