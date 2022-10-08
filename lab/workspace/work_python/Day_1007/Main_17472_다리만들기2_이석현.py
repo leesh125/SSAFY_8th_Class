@@ -82,7 +82,6 @@ edges.sort(key=lambda x:x[2])
 
 parent = [x for x in range(tmp)]
 
-
 temp = 0
 for fr,to,cost in edges:
     if find(fr) != find(to):
