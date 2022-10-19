@@ -9,12 +9,14 @@ public interface DeptDAO {
 
 	int insertDept(Dept dept) throws SQLException;
 
+	boolean updateDept(Dept dept) throws SQLException;
+
 	List<Dept> selectDepts() throws SQLException;
 
+	//	부서 번호 주면 
 	Dept selectDept(int deptNo) throws SQLException;
 
+	//	부서 번호 받아서 삭제하기
 	boolean deleteDept(int deptNo) throws SQLException;
-
-	int updateDept(int deptno, String dname, String loc) throws SQLException;
 
 }

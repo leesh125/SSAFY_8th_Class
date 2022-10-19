@@ -10,6 +10,7 @@ public class DBUtil {
 	private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/scott?serverTimezone=UTC";
 	private static final String DB_USER = "ssafy";
 	private static final String DB_PASS = "ssafy";
+
 	
 	static {
 		try {
@@ -24,7 +25,7 @@ public class DBUtil {
 	}
 	
 	public static void close(AutoCloseable... resources) {
-		for (AutoCloseable resource : resources) {
+		for (AutoCloseable resource : resources) {			
 			if(resource != null) {
 				try {
 					resource.close();
@@ -34,4 +35,5 @@ public class DBUtil {
 			}
 		}
 	}
+	
 }

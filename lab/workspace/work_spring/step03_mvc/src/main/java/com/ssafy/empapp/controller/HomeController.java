@@ -1,18 +1,14 @@
 package com.ssafy.empapp.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+@Controller
 public class HomeController {
-
-//	@Override
-//	public Object handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		String url = request.getServletPath();
-//		if(url.equals("/index.do")) {
-//			return index(request,response);
-//		}
-//		return null;
-//	}
 	
-	
+	@RequestMapping({"/index.do", "/"})
+	protected String index() throws Exception {	
+		return "index";
+	}
 }

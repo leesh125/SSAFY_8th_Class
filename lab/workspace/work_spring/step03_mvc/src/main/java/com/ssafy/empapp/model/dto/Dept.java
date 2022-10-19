@@ -1,10 +1,13 @@
 package com.ssafy.empapp.model.dto;
 
+// Model : DTO, DO, AO
 public class Dept {
 
 	private int deptno;
 	private String dname;
 	private String loc;
+	
+	public Dept() {}
 	
 	public Dept(int deptNo, String dname, String loc) {
 		super();
@@ -13,12 +16,12 @@ public class Dept {
 		this.loc = loc;
 	}
 
-	public int getDeptNo() {
+	public int getDeptno() {
 		return deptno;
 	}
 
-	public void setDeptNo(int deptNo) {
-		this.deptno = deptNo;
+	public void setDeptno(int deptno) {
+		this.deptno = deptno;
 	}
 
 	public String getDname() {
@@ -36,6 +39,5 @@ public class Dept {
 	public void setLoc(String loc) {
 		this.loc = loc;
 	}
-	
 	
 }

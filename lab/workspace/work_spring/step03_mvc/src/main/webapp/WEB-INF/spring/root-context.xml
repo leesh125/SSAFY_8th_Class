@@ -6,6 +6,8 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<!-- 모델 관련 설정은 여기에... -->
-	<context:component-scan base-package="com.ssafy.empapp.model"/>	
+	<!-- 모델 관련 설정은 여기에!!! -->
+	
+	<context:component-scan base-package="com.ssafy.empapp.model"></context:component-scan>
+	
 </beans>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +11,16 @@
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/menu.jsp">
+<jsp:include page="/WEB-INF/views/menu.jsp"></jsp:include>
 	<div class="container">
-	
 		<div class="row mt-3">
 			<h2 class="bg-primary text-light text-center">부서 등록</h2>
 		</div>
-		<c:if test="${errorMsg!=null }">
+		
+		<c:if test="${ errorMsg != null }">
 			<div class="row mt-3">
-				<h2 class="bg-primary text-light text-center">${errorMsg }</h2>
-			</div>
+				<h4 class="bg-warning text-light text-center">${errorMsg}</h4>
+			</div>		
 		</c:if>
 		
 		<form method="post" action="${root}/dept/register.do" class="row">
