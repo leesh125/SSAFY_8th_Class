@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ssafy.empapp.model.dto.User;
 import com.ssafy.empapp.model.service.UserService;
 
 @RequestMapping("/user")
@@ -31,6 +32,17 @@ public class UserController {
 		}
 	}
 	
+	@PostMapping("/register.do")
+	protected String register(User user, Model model) throws Exception {
+		boolean isRegistered = userService.register(user);
+		if(isRegistered) {
+			return "redirect:/user/login.do";
+		} else {
+			model.addAttribute("errorMsg", "회원가입 실패했습니다.");
+			return "redirect:/user/register.do";
+		}
+	}
+	
 	
 	@GetMapping("logout.do")
 	protected String logout(HttpSession session) throws Exception {
@@ -38,9 +50,14 @@ public class UserController {
 		return "redirect:/index.do";
 	}
 	
-	
-	@GetMapping("/login_form.do")
+	@GetMapping("/register_form.do")
 	protected String loginForm() {
-		return "user/login";
+		return "user/register";
 	}
+	
+//	
+//	@GetMapping("/login_form.do")
+//	protected String loginForm() {
+//		return "user/login";
+//	}
 }

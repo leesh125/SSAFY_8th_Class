@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import org.springframework.stereotype.Repository;
 
+import com.ssafy.empapp.model.dto.User;
 import com.ssafy.empapp.util.DBUtil;
 
 @Repository
@@ -36,5 +37,29 @@ public class UserDAOImpl implements UserDAO {
 			DBUtil.close(rs,pstmt,conn);
 		}
 		return null;
+	}
+
+	@Override
+	public int register(User user) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int rs = 0;
+		String sql = "insert into userinfo values(?,?,?,?)";
+		try {
+			conn = DBUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUserid());
+			pstmt.setString(2, user.getPassword());
+			pstmt.setString(3, user.getName());
+			pstmt.setString(4, user.getEmail());
+			
+			rs = pstmt.executeUpdate();
+			if(rs == 1) { //id,pw 일치하는사람 있을수도있고 없을수도있음
+				return rs;
+			}
+		} finally {
+			DBUtil.close(pstmt,conn);
+		}
+		return 0;
 	}
 }

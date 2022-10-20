@@ -13,11 +13,17 @@
 
 <jsp:include page="/WEB-INF/views/menu.jsp"></jsp:include>
 
-<script type="text/javascript">
-	<c:if test="${not empty msg}">
-		alert("${msg}");
+<!-- <script type="text/javascript">
+	<c:if test="${not empty param.msg}">
+		alert("${param.msg}");
 	</c:if>
-</script>
+</script> -->
+
+	<script type="text/javascript">
+		<c:if test="${not empty msg}">
+			alert("${msg}");
+		</c:if>
+	</script>
 
 
 

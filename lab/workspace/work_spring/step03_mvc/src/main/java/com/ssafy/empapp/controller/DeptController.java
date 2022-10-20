@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.InternalResourceView;
 
 import com.ssafy.empapp.model.dto.Dept;
@@ -77,28 +79,43 @@ public class DeptController {
 	}
 
 	
+//	@PostMapping("/modify.do")
+//	protected ModelAndView getDeptModify(Dept dept) throws Exception {
+//
+//		boolean isUpdated = deptService.updateDept(dept);
+//		ModelAndView mav = new ModelAndView();
+//
+//		if (isUpdated) {
+//			mav.addObject("msg", "부서 정보 수정에 성공하였습니다.");
+//		} else {
+//			mav.addObject("msg", "부서 정보 수정에 실패하였습니다.");
+//		}
+//		
+//		mav.setView(new InternalResourceView("/dept/list.do"));
+//		return mav;
+//
+//	}
+	
 	@PostMapping("/modify.do")
-	protected ModelAndView getDeptModify(Dept dept) throws Exception {
+	protected String getDeptModify(Dept dept, RedirectAttributes rAttributes) throws Exception {
 
 		boolean isUpdated = deptService.updateDept(dept);
-		ModelAndView mav = new ModelAndView();
 
 		if (isUpdated) {
-			mav.addObject("msg", "부서 정보 수정에 성공하였습니다.");
+			rAttributes.addFlashAttribute("msg", "부서 정보 수정에 성공하였습니다.");
 		} else {
-			mav.addObject("msg", "부서 정보 수정에 실패하였습니다.");
+			rAttributes.addFlashAttribute("msg", "부서 정보 수정에 실패하였습니다.");
 		}
 		
-		mav.setView(new InternalResourceView("/dept/list.do"));
-		return mav;
+		return "redirect:/dept/list.do";
 
 	}
 	
 	
-	@RequestMapping("/register_form.do")
-	protected String registerForm() {
-		return "dept/register_form";
-	}
+//	@RequestMapping("/register_form.do")
+//	protected String registerForm() {
+//		return "dept/register_form";
+//	}
 
 	
 	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
@@ -117,6 +134,11 @@ public class DeptController {
 		}
 	}
 	
-	
+	@ExceptionHandler(Exception.class)
+	public String handelException(Exception e, Model model) {
+		System.out.println("exception 발생 : " + e.getMessage());
+		model.addAttribute("errorMsg", e.getMessage());
+		return "error";
+	}
 	
 }

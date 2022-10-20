@@ -10,7 +10,7 @@
 	</c:when>
 
 	<c:otherwise>
-		<span class="btn btn-primary">회원가입</span>
+		<a href="${root}/user/register_form.do"><span class="btn btn-primary">회원가입</span></a>
 		<a href="${root}/user/login_form.do"><span class="btn btn-info">로그인</span></a>	
 		<a href="${root}/index.do"><span class="btn btn-info">홈으로</span></a>
 	</c:otherwise>

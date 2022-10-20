@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.empapp.model.dao.UserDAO;
+import com.ssafy.empapp.model.dto.User;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,6 +22,14 @@ public class UserServiceImpl implements UserService {
 
 		// 로그인 DB 작업
 		return userDao.login(userId, password);
+		
+	}
+	
+	@Override
+	public boolean register(User user) throws Exception {
+
+		// 로그인 DB 작업
+		return userDao.register(user) > 0 ? true:false;
 		
 	}
 	
