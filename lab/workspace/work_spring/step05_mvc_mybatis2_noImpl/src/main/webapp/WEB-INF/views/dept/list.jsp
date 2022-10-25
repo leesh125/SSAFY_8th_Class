@@ -54,7 +54,8 @@
 							<tr>
 								<td>${status.count}</td>
 								<td>${dept.deptno}</td>
-								<td><a href="${root}/dept/detail.do?deptno=${dept.deptno}">${dept.dname}</a></td>
+								<%-- <td><a href="${root}/dept/detail.do?deptno=${dept.deptno}">${dept.dname}</a></td> --%>
+								<td><a href="${root}/dept/detail_with_emps.do?deptno=${dept.deptno}">${dept.dname}</a></td>
 								<td>${dept.loc}</td>
 							</tr>
 						</c:forEach>

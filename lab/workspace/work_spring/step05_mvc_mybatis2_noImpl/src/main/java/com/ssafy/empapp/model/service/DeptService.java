@@ -6,14 +6,15 @@ import com.ssafy.empapp.model.dto.Dept;
 
 public interface DeptService {
 
-	boolean registerDept(Dept dept) throws Exception;
+	boolean registerDept(Dept dept);
 
-	List<Dept> getDepts() throws Exception;
+	List<Dept> getDepts();
 
-	Dept getDept(int deptno) throws Exception;
+	Dept getDept(int deptno);
 
-	boolean deleteDept(int deptno) throws Exception;
+	boolean deleteDept(int deptno);
 
-	boolean updateDept(Dept dept) throws Exception;
+	boolean updateDept(Dept dept);
 
+	Dept getDEptWithEmps(int deptno);
 }

@@ -22,32 +22,38 @@ public class DeptServiceImpl implements DeptService {
 
 	
 	@Override
-	public boolean registerDept(Dept dept) throws Exception{
+	public boolean registerDept(Dept dept){
 		// 부서 등록
 		return deptDao.insertDept(dept) > 0;
 	}
 	
 	@Override
-	public List<Dept> getDepts() throws Exception{
+	public List<Dept> getDepts(){
 		// 부서리스트 조회
 		return deptDao.selectDepts();
 	}
 
 	@Override
-	public Dept getDept(int deptno) throws Exception{
+	public Dept getDept(int deptno){
 		// 부서 상세 조회
 		return deptDao.selectDept(deptno);
 	}
 	
 	@Override
-	public boolean deleteDept(int deptno) throws Exception{
+	public boolean deleteDept(int deptno){
 		// 부서 상세 조회
 		return deptDao.deleteDept(deptno);
 	}
 	
 	@Override
-	public boolean updateDept(Dept dept) throws Exception{
+	public boolean updateDept(Dept dept){
 		// 부서 정보 갱신
 		return deptDao.updateDept(dept);
+	}
+
+
+	@Override
+	public Dept getDEptWithEmps(int deptno) {
+		return deptDao.selectDeptWithEmps(deptno);
 	}
 }

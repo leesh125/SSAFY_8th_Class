@@ -36,4 +36,16 @@
         <result column="dname" property="dname" />
         <result column="loc" property="loc" />
     </resultMap>
+    
+    <resultMap type="Dept" id="DeptEmpResultMap" extends="DeptResultMap">
+        <collection property="emps" resultMap="com.ssafy.resultmaps.EmpResultMap"/>
+    </resultMap>
+    
+    <select id="selectDeptWithEmps" parameterType="int" resultMap="DeptEmpResultMap">
+    	select d.deptno, d.dname, d.loc, e.empno, e.ename,e.sal,e.job
+    	from dept d
+    	left outer join emp e on d.deptno = e.deptno
+    	where d.deptno = #{deptno}
+    </select>
+    
 </mapper>

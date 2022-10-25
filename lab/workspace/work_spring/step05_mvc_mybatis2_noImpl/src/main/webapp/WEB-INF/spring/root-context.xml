@@ -5,17 +5,19 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:c="http://www.springframework.org/schema/c"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- 모델 관련 설정은 여기에!!! -->
 	
 	<context:component-scan base-package="com.ssafy.empapp.model"></context:component-scan>
-    <context:property-placeholder location="classpath:db.properties"/>
+    <context:property-placeholder location="classpath:db.properties" />
 	
 	<mybatis-spring:scan base-package="com.ssafy.empapp.model.dao"
-		annotation="org.apache.ibatis.annotations.Mapper"/>
+		annotation="org.apache.ibatis.annotations.Mapper"
+		/>
 	
 	<bean id="ds" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
         p:driverClass = "${db_driver}"
@@ -33,10 +35,13 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
         p:dataSource-ref="ds"
         p:typeAliasesPackage="com.ssafy.empapp.model.dto"
-        p:mapperLocations="">
+        p:mapperLocations="classpath:mapper/*.xml">
     </bean>
 	
-	<bean class="org.mybatis.spring.SqlSessionTemplate" c:sqlSessionFactory-ref="sqlSessionFactory"></bean>
+	
+	<!-- impl 없을 때 사용 
+	<bean class="org.mybatis.spring.SqlSessionTemplate" c:sqlSessionFactory-ref="sqlSessionFactory"></bean> 
+	-->
 	
 	
 </beans>

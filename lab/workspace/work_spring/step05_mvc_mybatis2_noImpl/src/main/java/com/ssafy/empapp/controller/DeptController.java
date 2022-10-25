@@ -58,6 +58,18 @@ public class DeptController {
 		return mav;
 
 	}
+	
+	@RequestMapping("/detail_with_emps.do")
+	protected ModelAndView getDeptDetailWithEmps(@RequestParam int deptno) throws Exception {
+		Dept dept = deptService.getDEptWithEmps(deptno);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dept", dept);
+		mav.setViewName("/dept/detail_form_emps");
+		
+		return mav;
+	}
+	
+	
 
 	
 	@GetMapping("/delete.do")
