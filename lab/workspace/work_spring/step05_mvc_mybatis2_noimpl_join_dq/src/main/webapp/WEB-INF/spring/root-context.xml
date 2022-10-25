@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!--  모델 관련 설정은 여기에... -->
+	<context:component-scan base-package="com.ssafy.empapp.model"/>	
+	<context:property-placeholder location="classpath:db.properties"/>
+	
+	<mybatis-spring:scan base-package="com.ssafy.empapp.model.dao" 
+		annotation="org.apache.ibatis.annotations.Mapper"
+		/>
+	
+	<bean id="ds" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+		p:driverClass="${db_driver}"
+		p:url="${db_url}"
+		p:username="${db_username}"
+		p:password="${db_password}"
+	/>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="ds"
+		p:typeAliasesPackage="com.ssafy.empapp.model.dto"
+		p:mapperLocations="classpath:mapper/*.xml"
+	>
+	</bean>
+	
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
