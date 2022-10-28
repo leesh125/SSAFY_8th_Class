@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.empapp.model.dao.DeptDAO">
+
+	<insert id="insertDept" parameterType="Dept">
+		insert into dept(deptno,dname,loc) values(#{deptno},#{dname},#{loc})
+	</insert>
+
+	<update id="updateDept" parameterType="Dept">
+		update dept set dname = #{dname},loc = #{loc} 
+		where deptno = #{deptno}
+	</update>
+	
+	<delete id="deleteDept" parameterType="int">
+		delete from dept where deptno = #{deptno}
+	</delete>
+	
+	<sql id="basicSelectSQL">
+		select deptno,dname,loc from dept
+	</sql>
+	
+	<select id="selectDepts" resultMap="DeptResultMap">
+		<include refid="basicSelectSQL"/>
+	</select>	
+	
+	<select id="searchSelectDepts" resultMap="DeptResultMap">
+		<include refid="basicSelectSQL"/>
+		<where>
+		    <if test="dname != null and dname != ''">
+		        dname like concat('%', #{dname}, '%')
+		    </if>
+		    <if test="loc != null and loc != ''">
+		        AND loc = #{loc}
+		    </if>
+		</where>
+	</select>	
+	
+	<select id="selectDept" resultType="Dept" 
+		parameterType="int">
+		<include refid="basicSelectSQL"/>
+		where deptno = #{value}
+	</select>	
+
+	<!-- 레코드 하나를 해당 타입에 어떻게 매핑시켜 담아야하는지의 매핑전략 -->
+	<resultMap type="Dept" id="DeptResultMap">
+		<id column="deptno" property="deptno"/>
+		<result column="dname" property="dname"/>
+		<result column="loc" property="loc"/>		
+	</resultMap>
+	
+ 	<resultMap type="Dept" id="DeptEmpResultMap" extends="DeptResultMap" autoMapping="true">
+		<collection property="emps" resultMap="com.ssafy.resultmaps.EmpResultMap"/>
+	</resultMap>
+		
+	<select id="selectDeptWithEmps" parameterType="int" resultMap="DeptEmpResultMap">
+		select				d.deptno,d.dname,d.loc, e.empno, e.ename,e.sal,e.job
+		from				dept d
+		left outer 	join	emp   e on(d.deptno = e.deptno)
+		where	d.deptno = #{deptno}
+	</select>
+
+	
+	<!-- <resultMap type="Dept" id="DeptEmpResultMap2" extends="DeptResultMap">
+		<collection property="emps" column="deptno" ofType="Emp" 
+			select="com.ssafy.empapp.model.dao.EmpDAO.selectEmpsByDeptno"/>
+	</resultMap>
+	
+	<select id="selectDeptWithEmps" parameterType="int" resultMap="DeptEmpResultMap2">
+		select	deptno,dname,loc
+		from	dept 
+		where	deptno = #{deptno}
+	</select> -->
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
