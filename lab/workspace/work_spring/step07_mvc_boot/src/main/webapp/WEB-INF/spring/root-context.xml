@@ -15,9 +15,9 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+	<!-- <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="ds" />
-	<!-- <tx:annotation-driven transaction-manager="transactionManager"/> -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 	<tx:advice id="txAdvice">
 		<tx:attributes>
 			<tx:method name="register*" />
@@ -30,7 +30,7 @@
 	
 	<aop:config>
 		<aop:advisor advice-ref="txAdvice" pointcut="within(com.ssafy.empapp.model.service.*)"/>
-	</aop:config>
+	</aop:config> -->
 </beans>
 
 

@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.empapp.model.dao.EmpDAO;
 import com.ssafy.empapp.model.dto.Emp;
 
+@Transactional
 @Service
 public class EmpServiceImpl implements EmpService {
 
