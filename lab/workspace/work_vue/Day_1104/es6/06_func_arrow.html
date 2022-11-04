@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // arrow function : 람다식의 표현형태로 함수를 작성
+      // function(매개변수) { 코드 } : (매개변수)=>{코드}
+
+      // const hello = function () {
+      //   console.log("hello..");
+      // };
+      const hello = () => console.log("hello.."); //매개변수가 없고 실행문이 유일한 실행문
+      const sum = (a, b) => a + b; //return문이면 return도 생략
+
+      hello();
+      console.log(sum(1, 2));
+      console.log(sum(10, 2));
+    </script>
+  </body>
+</html>
