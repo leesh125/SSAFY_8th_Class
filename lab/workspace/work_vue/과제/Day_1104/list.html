@@ -31,14 +31,12 @@
 						<th>부서지역</th>
 					</tr>			
 				</thead>
-				<tbody>
-					<tr id="app">
-            <td v-for="dept in depts">{{dept}}</td>
-						<!-- <td>${status.count}</td>
-						<td>${dept.deptno}</td> -->
- 						<!-- <td><a href="${root}/dept/detail.do?deptno=${dept.deptno}">${dept.dname}</a></td> -->
-						<!-- <td><a href="${root}/dept/detail_with_emps.do?deptno=${dept.deptno}">${dept.dname}</a></td>
-						<td>${dept.loc}</td> -->
+				<tbody id="app">
+					<tr v-for="dept in depts" >
+            <td>{{ dept.no }}</td>
+            <td>{{ dept.deptNo }}</td>
+            <td>{{ dept.deptName }}</td>
+            <td>{{ dept.loc }}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -57,7 +55,7 @@
         {
           el:"#app",
           // template : "<div><h1>{{message}}</h1></div>",
-          template : "myTemplate",
+          //template : "myTemplate",
           data : {
             depts: [
               { no: 1, deptNo: 20, deptName:'개발', loc:'서울' },
