@@ -1,0 +1,24 @@
+● Component
+  - 재사용 가능한 모듈, 부품, 단위
+
+● Vue.js Component
+  - SPA 구성하는 Building Block
+
+  => component의 효율적 개발 지원 SFC 지원 => Vue CLI를 제공
+
+● Component 구성요소
+  1. UI : template
+  2. data 모델 : data
+  3. behavior : method
+
+※ Ex
+  1. TodayWeather 컴포넌트
+    - 날씨 보여주는 UI
+    - 날씨 정보 data
+    - 날씨 불러와 파싱 기능
+  
+  2. Timer 컴포넌트
+    - Timer 보여주는 UI
+    - 종료시간  정보 data
+    - Timer 관리, 제어 기능
+
