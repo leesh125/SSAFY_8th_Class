@@ -65,7 +65,8 @@
       // }
       getDepts() {
         axios.get('http://localhost:8080/api/depts')
-        .then(response=>this.depts = response.data);
+        .then(({data})=>this.depts = data);
+        // .then(response=>this.depts = response.data);
       }
     },
     created() {
