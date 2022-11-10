@@ -121,12 +121,21 @@
           });
         },
         deleteUsers(){
-          axios.delete(`http://localhost:8080/api/emps/${this.checkedUsers}`)
+          axios.delete(`http://localhost:8080/api/emps?empno=${this.checkedUsers}`)
           .then(response=>{
             console.log(response);
             this.getEmps();
           });
         }
+        // deleteUsers() {
+        //   let params = "";
+        //   this.checkedUsers.forEach((item) => (params += `empno=${item}&`));
+        //   axios.delete(`http://localhost:8080/api/emps?${params}`)
+        //     .then(status => {
+        //       console.log(`removeEmps success : ${status}`);
+        //       this.getEmps();
+        //     });
+        // }
       },
       watch: {
         deptno() {
