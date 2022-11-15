@@ -15,12 +15,7 @@
           <tr>
             <th><label for="dname">부서이름</label></th>
             <td>
-              <input
-                type="text"
-                name="dname"
-                id="dname"
-                v-model.lazy="dept.dname"
-              />
+              <input type="text" name="dname" id="dname" v-model.lazy="dept.dname" />
             </td>
           </tr>
           <tr>
@@ -33,12 +28,7 @@
         <tfoot>
           <tr>
             <td colspan="2">
-              <input
-                type="button"
-                value="등록"
-                @click="registerDept"
-                class="btn btn-warning m-1"
-              />
+              <input type="button" value="등록" @click="registerDept" class="btn btn-warning m-1" />
               <input type="reset" value="취소" class="btn btn-info m-1" />
             </td>
           </tr>
@@ -49,7 +39,7 @@
 </template>
 
 <script>
-import http from '@/util/http-common'
+import Constant from "@/common/Constant.js";
 export default {
   data() {
     return {
@@ -58,7 +48,7 @@ export default {
   },
   methods: {
     registerDept() {
-      http.post(`/api/depts`, this.dept).then(() => {
+      this.$store.dispatch(Constant.REGISTER_DEPT, this.dept).then(() => {
         console.log(`registerDept success`);
         this.clear();
         this.$router.push("/dept");
@@ -68,8 +58,10 @@ export default {
       this.dept = {};
     },
   },
+  created() {
+    console.log("DeptForm created..");
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>

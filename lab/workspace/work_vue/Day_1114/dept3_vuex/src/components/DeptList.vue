@@ -14,15 +14,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-if="!depts || depts== null || depts.length == 0">
+          <tr v-if="!depts || depts == null || depts.length == 0">
             <td colspan="4">등록된 사용자 정보가 없습니다.</td>
           </tr>
           <template v-else>
-            <tr
-              v-for="(dept, index) in depts"
-              :key="dept.deptno"
-              @click="pickDept(dept.deptno)"
-            >
+            <tr v-for="(dept, index) in depts" :key="dept.deptno" @click="pickDept(dept.deptno)">
               <td>{{ index + 1 }}</td>
               <td>{{ dept.deptno }}</td>
               <td>{{ dept.dname }}</td>
@@ -33,9 +29,7 @@
         <tfoot>
           <tr>
             <td colspan="4">
-              <div class="btn btn-success text-center" @click="changeForm">
-                등록
-              </div>
+              <div class="btn btn-success text-center" @click="changeForm">등록</div>
             </td>
           </tr>
         </tfoot>
@@ -45,47 +39,39 @@
 </template>
 
 <script>
-import Constant from '../common/Constant.js'
+import Constant from "@/common/Constant.js";
+import { mapGetters,mapActions } from 'vuex';
 
 export default {
-  computed: {
-    depts() {
-      return this.$store.state.depts;
-    }
-  },
-  props: {
-    refresh: {
-      type: Number,
-      default: 0,
-    },
-  },
+  // computed: {
+  //   depts() {
+  //     // return this.$store.state.depts;
+  //     return this.$store.getters.depts;
+  //   },
+  // },
+  computed: mapGetters(["depts"]),
   methods: {
-    getDepts() {
-      this.$store.dispatch(Constant.GET_DEPTS);
-    },
+    ...mapActions(Constant.GET_DEPTS),
     pickDept(deptno) {
       this.$router.push(`/dept/detail/${deptno}`);
     },
     changeForm() {
-      this.$router.push('/dept/regForm');
+      this.$router.push("/dept/regForm");
     },
   },
   created() {
     this.getDepts();
   },
   watch: {
-    refresh() {
-      this.getDepts();
-    },
     $route(to) {
-      if (to.path == '/dept') {
-        console.log("getDept ...")
+      console.log("DeptList watch route");
+      if (to.path == "/dept") {
+        console.log("get Depts...");
         this.getDepts();
       }
-    }
+    },
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

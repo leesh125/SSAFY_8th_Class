@@ -1,22 +1,23 @@
-import EmpView from "@/views/EmpView.vue"
-import DeptView from "@/views/DeptView.vue"
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import DeptView from '@/views/DeptView.vue'
+import EmpView from '@/views/EmpView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    redirect:'/dept'
+    redirect: '/dept'
   },
   {
     path: '/dept',
     name: 'dept',
     component: DeptView,
+
     children: [
       {
-        path: 'regForm',
+        path: 'regForm' ,
         component:() => import('@/components/DeptForm')
       },
       {
@@ -25,24 +26,12 @@ const routes = [
         component:() => import('@/components/DeptDetail')
       },
     ]
-
   },
   {
     path: '/emp',
     name: 'emp',
-    component: EmpView,
-    children: [
-      {
-        path: 'regForm',
-        component:() => import('@/components/EmpForm')
-      },
-      {
-        path: 'detail/:empno',
-        props:true,
-        component:() => import('@/components/EmpDetail')
-      },
-    ]
-  }
+    component: EmpView
+  },
 ]
 
 const router = new VueRouter({
