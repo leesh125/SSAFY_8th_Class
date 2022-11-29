@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let name = "홍길동";
+    let age = 27;
+
+    // let person = {
+    //   name : name,
+    //   age : age,
+    //   tel : "010-0303-2020",
+    //   increaseAge : function() {
+    //     this.age++;
+    //   }
+    // };
+    let person = {
+      name,
+      age,
+      tel : "010-0303-2020",
+      increaseAge(){
+        this.age++;
+      }
+    };
+
+    console.log(person);
+    person.increaseAge();
+    console.log(person);
+
+    // 구조 분해 할당
+    let arr = [2, 10, 20];
+    console.log(arr[0], arr[1], arr[2]);
+    let [a,b,c] = arr;
+    console.log(a,b,c);
+
+    let person3 = {
+      name2 : "김길동",
+      age2 : 20
+    }
+    let {name2,age2} = person3;
+    console.log(name2, age2);
+    let {name2:n,age2:ag} = person3;
+    console.log(n, ag);
+
+    function print(name, age){
+      console.log(name, age);
+    }
+
+    print(person3.name2, person3.age);
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="background-color: skyblue;">
+    <h1>{{message}}</h1>
+    <h2>Test</h2>
+  </div>
+
+  <template id="myTemplate">
+    <div>
+      <h1 style="color: blue;">{{message}}</h1>
+    </div>
+  </template>
+
+  <script>
+    let model = {
+      message : "Hello World"
+    }
+
+    let app = new Vue(
+      {
+        el:"#app",
+        // template : "<div><h1>{{message}}</h1></div>",
+        template : "myTemplate",
+        data : model,
+        beforeCreate() {
+          console.log(`beforeCreated : ${this.message}, ${this.$el}`)
+        },
+        created() {
+          console.log(`created : ${this.message}, ${this.$el}`)
+        },
+        beforeMount() {
+          console.log(`beforeMount : ${this.message}, ${this.$el}`)
+        },
+        mounted() {
+          console.log(`mounted : ${this.message}, ${this.$el}`)
+        },
+        beforeUpdate() {
+          console.log(`beforeUpdate : ${this.message}, ${this.$el}`)
+        },
+        updated() {
+          console.log(`updated : ${this.message}, ${this.$el}`)
+        },
+      }
+    );
+    console.log(1);
+    // app.$mount("#app");
+    console.log(2);
+  </script>
+</body>
+</html>
