@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="register.do" method="get">
+    <label for="name">이름</label>
+    <input type="text" id="name" name="username" placeholder="이름을 입력하세요" required="required"/> <br/>
+    <label for="email">이메일</label>
+    <input type="email" name="email" placeholder="이메일을 입력하세요"/> <br/>
+    성별 : 
+    <input type="radio" name="gender" id="mgender" value="male"> <label for="mgender">남</label>
+    <input type="radio" name="gender" id="fgender" value="female"> <label for="fgender">여</label><br/>
+    취미 :
+    <input type="checkbox" name="hobby" id="shobby" value="shobby"> <label for="shobby">수영</label>
+    <input type="checkbox" name="hobby" id="mhobby" value="mhobby"> <label for="mhobby">영화</label><br/>
+
+    <input list="locations" name="location" id="location">
+    <datalist id="locations">
+      <option value="서울">
+      <option value="인천">
+      <option value="수원">
+      <option value="부산">
+      <option value="제주도">
+    </datalist>
+    <br/>
+    <input type="hidden" name="type" value="a">
+    <input type="submit" value="전송1">
+    <input type="submit" value="전송2" formaction="other.do" formmethod="post">
+  </form>
+</body>
+</html>

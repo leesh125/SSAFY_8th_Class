@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function changeImage(imgElement){
+      if(imgElement.getAttribute("src").indexOf("bulbon") != -1){
+        imgElement.setAttribute("src", "./img/pic_bulboff.gif");
+      }else{
+        imgElement.setAttribute("src", "./img/pic_bulbon.gif");
+      }
+    }
+
+    function changeImage2(){
+      if(this.getAttribute("src").indexOf("bulbon") != -1){
+        this.setAttribute("src", "./img/pic_bulboff.gif");
+      }else{
+        this.setAttribute("src", "./img/pic_bulbon.gif");
+      }
+    }
+    window.onload = function() {// 모든 리소스들이 창에 로딩 되었을 때
+      document.getElementById("light").onclick = changeImage2();
+    };
+    window.onload = function() {// 모든 리소스들이 창에 로딩 되었을 때
+      document.getElementById("light").addEventListener("click", changeImage2)
+      document.getElementById("light").addEventListener("click", function(){
+        alert("hahaha");
+      });
+    };
+  </script>
+  
+</head>
+<body>
+  <!--
+    html 요소 이벤트 처리
+    1) html 요소의 onxxxx 속성으로 이벤트 핸들러 지정
+    2) js 코드에서 dom tree에서 html 요소 객체를 찾고 onxxx 속성으로 이벤트 핸들러 지정
+      3) js 코드에서 dom tree에서 html 요소 객체를 찾고 addEventListener 속성으로 이벤트 핸들러 지정
+
+  -->
+  <img src="./img/pic_bulboff.gif" alt="불" onclick="changeImage(this)" >
+
+  <img src="./img/pic_bulboff.gif" id="light" alt="불">
+
+  <img src="./img/pic_bulboff.gif" id="testlight" alt="불" onclick="change()">
+  <script>
+    
+    let idx = -1;
+    const images = {
+      1 : "pic_bulboff",
+      2 : "pic_bulbon_blue",
+      3 : "pic_bulbon_green",
+      4 : "pic_bulbon_red",
+      5 : "pic_bulbon_yellow",
+      6 : "pic_bulbon"
+    }
+    
+    
+    function change(){
+      const img = document.getElementById('testlight');
+      const nowImg = img.src;
+      const temp1 = nowImg.split('/');
+      const gif = temp1[temp1.length - 1];
+      const imgName = gif.split('.')[0];
+      for (let i = 1; i <= 6; i++) {
+        if(images[i] == imgName){
+          idx = i;
+        }
+      }
+      console.log(idx);
+      while(true){
+        
+        const rand = Math.floor(Math.random()*6)+1;
+        if (rand == idx) continue;
+        const chosenImage = images[rand];
+        img.setAttribute("src",`./img/${chosenImage}.gif`)
+        break;
+      }
+      
+      
+    }
+  </script>
+</body>
+</html>

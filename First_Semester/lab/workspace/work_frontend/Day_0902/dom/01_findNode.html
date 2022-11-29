@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>노드찾기</title>
+    <style>
+      body {
+        font-size: 9pt;
+        font-family: "굴림";
+      }
+      div,
+      p {
+        border: 1px #eeeeee solid;
+        margin: 10px;
+      }
+    </style>
+
+    <script>
+      function findByTagName() {
+        // 전체문서에서 태그이름이 div인 Element Node찾기
+        // NodeList getElementsByTagName(tagName)
+        // NodeList : length, item() 만 존재
+        // length : 전체 크기 , item(index) : 원소 하나씩 꺼냄
+        var divs = document.querySelectorAll("div");
+        alert("전체문서에서 div 엘러먼트 갯수 : " + divs.length);
+
+        for (var i = 0; i < divs.length; i++) {
+          // 찾은 노드에서 n번째 노드를 접근해서
+          var div = divs.item(i);
+          //	var div = divs[i]; // 위와 같은 방법
+          // 스타일 변경하기.
+          div.style.border = "4px solid #ff0000";
+        }
+      }
+
+      function findByTagName2() {
+        // 특정노드의 자손노드에서 태그이름이 div인 Element Node찾기
+        // NodeList getElementsByTagName(tagName)
+        // NodeList : length, item() 만 존재
+        // length : 전체 크기 , item(index) : 원소 하나씩 꺼냄
+        var allDivs = document.getElementsByTagName("div");
+        var divs = allDivs[2].getElementsByTagName("div");
+        alert("찾은 엘리먼트 갯수 : " + divs.length);
+
+        allDivs[2].style.border = "4px solid blue";
+        allDivs[6].style.border = "4px solid green"; // 깊이 탐색 따라서, footer div가 allDivs의 젤 마지막
+
+        for (var i = 0; i < divs.length; i++) {
+          // 찾은 노드에서 n번째 노드를 접근해서
+          var div = divs.item(i);
+          //	var div = divs[i]; // 위와 같은 방법
+          // 스타일 변경하기.
+          div.style.border = "4px solid #ff0000";
+        }
+      }
+
+      function findByClassName() {
+        // 전체문서에서 css클래스이름이 content-data인 Element Node찾기
+        // NodeList getElementsByClassName(className)
+        // IE는 9버전 이상부터 지원 (HTML4 DOM에는 명시되어 있지 않지만  HTML5 DOM에는 정식 등록)
+        // 크롬,사파리, 파이어폭스등은 지원
+        var contenData = document.querySelectorAll(".content_data");
+        alert("찾은 엘리먼트 갯수 : " + contenData.length);
+
+        for (var i = 0; i < contenData.length; i++) {
+          var c = contenData.item(i);
+          c.style.border = "4px solid #ff0000";
+        }
+      }
+
+      function findById() {
+        // 전체문서에서 태그이름이 div인 Element Node찾기
+        // Node getElementById(id)
+
+        var header = document.querySelector("#header");
+        header.style.border = "4px solid #ff0000";
+      }
+    </script>
+  </head>
+  <body>
+    <h2>1. 노드 찾기</h2>
+    <div id="sample_page" class="page">
+      샘플 페이지(div, id=sample_page, class=page)
+      <div id="header">헤더 영역(div, id=header)</div>
+      <div id="content" class="sample_content">
+        컨텐츠 영역(div, id=content, class=sample_content)
+        <div>
+          JavaScript란?(div)
+          <p id="data_1">1. 자바스크립트 Core(p, id=data_1)</p>
+          <p id="data_2">2. 자바스크립트 BOM(p, id=data_2)</p>
+          <p id="data_3">3. 자바스크립트 DOM(p, id=data_3)</p>
+          을 배운다는것
+        </div>
+        <div class="content_data">
+          자바스크립트에서 배울 내용(div, class=content_data)
+          <p>1. 자바스크립트 DOM(p)</p>
+          <p>2. 자바스크립트 Ajax(p)</p>
+        </div>
+        <div class="content_data">
+          jQuery에서 배울 내용(div, class=content_data)
+          <p>1. jQuery DOM(p)</p>
+          <p>2. jQuery Ajax(p)</p>
+        </div>
+      </div>
+      <div id="footer">푸터 영역(div, id=footer)</div>
+    </div>
+    <input
+      type="button"
+      value="문서에서 태그이름으로 찾기"
+      onclick="findByTagName()"
+    />
+    <input
+      type="button"
+      value="특정노드에서 태그이름으로 찾기"
+      onclick="findByTagName2()"
+    />
+    <input
+      type="button"
+      value="클래스이름로 찾기"
+      onclick="findByClassName()"
+    />
+    <input type="button" value="ID로 찾기" onclick="findById()" />
+  </body>
+</html>

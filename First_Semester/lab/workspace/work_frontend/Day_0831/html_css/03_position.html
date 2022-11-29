@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+  <meta charset="utf-8">
+<style>
+ div{
+  font-size:30px;
+  font-weight:bold;
+ }
+ #wrap{
+  border:1px solid green;
+  position: relative;
+ } 
+ .box{
+  width:200px;
+  height:200px;
+ }
+ #cont1{
+  background-color: pink;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  transition-duration: 1s;
+ }
+ 
+ #cont2{
+  background-color:dodgerblue;
+  position: relative;
+  top: 20px;
+  left: 20px;
+ }
+ #cont3{
+  background-color: purple;
+ }
+
+ #banner{
+  width:150px;
+  height:300px;
+  background-color:skyblue;
+  position: fixed;
+  right: 5%;
+  top: 10%;
+ }
+</style>
+ </HEAD>
+
+ <BODY style="height: 200vh;">
+ <div>포지션.</div>
+ <div id="wrap">
+  <!-- <h1>내용1</h1>
+  <h1>내용2</h1> -->
+  <div id="cont1" class="box">1.Absolute</div>
+  <!-- <div id="cont2" class="box">2.Relative</div>
+  <div id="cont3" class="box">3.Static</div>
+  <div id="banner">배너</div> -->
+ </div>
+ </BODY>
+<script>
+  var cont1 = document.getElementById("cont1");
+  function changeTime() {
+    var now = new Date();
+    var seconds = now.getSeconds();
+    if(seconds %2 == 0){
+      cont1.innerHTML = "김태희!";
+      cont1.style.backgroundColor = "aliceblue";
+      cont1.style.color = "black";
+    }else{
+      cont1.innerHTML = "9반!";
+      cont1.style.backgroundColor = "rgb(250, 152, 143)";
+      cont1.style.color = "white";
+    }
+  }
+  changeTime();
+  setInterval(changeTime, 1000);
+</script>
+</HTML>
