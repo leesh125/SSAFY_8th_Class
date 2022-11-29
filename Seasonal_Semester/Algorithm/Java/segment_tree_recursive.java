@@ -55,19 +55,23 @@ public class segment_tree_recursive {
         }
 
         public int updateProcess(int inputStartIndex, int inputEndIndex, int treeIndex, int updateIndex, int updateValue) {
+
+            // 1 리프노드라면 tree index에 현재 값을 채우고 값을 가지고 올라온다
             if ((updateIndex < inputStartIndex) || (updateIndex > inputEndIndex)) {
                 return this.resultList[treeIndex];
             }
-
+            // 2 다음 왼/오를 구분하기 위해 중간값을 찾는다.
             if (inputStartIndex == inputEndIndex) {
                 this.resultList[treeIndex] = updateValue;
                 return this.resultList[treeIndex];
             }
 
+            // 3 왼쪽 값과 오른쪽 값을 가져온다.
             int inputMidIndex = (inputStartIndex + inputEndIndex) / 2;
             int leftResult = this.updateProcess(inputStartIndex, inputMidIndex, treeIndex * 2, updateIndex, updateValue);
             int rightResult = this.updateProcess(inputMidIndex + 1, inputEndIndex, treeIndex * 2 + 1, updateIndex, updateValue);
 
+            // 4. 두 값의 연산결과를 현위치에 저장하고 해당 값을 리턴
             this.resultList[treeIndex] = this.method(leftResult, rightResult);
 
             return this.resultList[treeIndex];

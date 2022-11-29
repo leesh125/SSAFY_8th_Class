@@ -1,3 +1,7 @@
+# ● Segment Tree
+#   - 어떤 데이터가 존재할 때, 특정 구간의 결과값을 구하는데 사용하는 자료구조
+#   - Segment Tree는 Binary Tree(이진 트리) 구조를 가지고 있다.
+
 from math import log2, ceil, gcd
 
 
@@ -48,11 +52,15 @@ class SegmentTree:
         self.update_process(self.input_start_index, self.input_end_index, self.tree_index, update_index, update_value)
 
     def get_range_process(self, input_start_index, input_end_index, tree_index, range_start_index, range_end_index):
+        # 완전하게 벗어나는 위치
         if input_end_index < range_start_index or input_start_index > range_end_index:
             return 0
 
+        # 구간에 완전히 들어감(리프, 아닐수도..)
+        # 그냥 값 가져와 밑에 내려가지마
         if input_start_index >= range_start_index and input_end_index <= range_end_index:
             return self.result_list[tree_index]
+
 
         input_mid_index = (input_start_index + input_end_index) // 2
 
@@ -67,18 +75,18 @@ class SegmentTree:
         return self.get_range_process(self.input_start_index, self.input_end_index, self.tree_index, range_start_index, range_end_index)
 
     def process(self, input_start_index, input_end_index, tree_index):
-        #1
+        #1 리프노드라면 tree index에 현재 값을 채우고 값을 가지고 올라온다
         if input_start_index == input_end_index:
             self.result_list[tree_index] = self.input_list[input_start_index]
             return self.result_list[tree_index]
-        #2
+        #2 다음 왼/오를 구분하기 위해 중간값을 찾는다.
         input_mid_index = (input_start_index + input_end_index) // 2
 
-        #3
+        #3 왼쪽 값과 오른쪽 값을 가져온다.
         left_result = self.process(input_start_index, input_mid_index, tree_index * 2)
         right_result = self.process(input_mid_index + 1, input_end_index, tree_index * 2 + 1)
 
-        #4
+        #4 두 값의 연산결과를 현위치에 저장하고 해당 값을 리턴
         self.result_list[tree_index] = self.method(left_result, right_result)
         return self.result_list[tree_index]
 
