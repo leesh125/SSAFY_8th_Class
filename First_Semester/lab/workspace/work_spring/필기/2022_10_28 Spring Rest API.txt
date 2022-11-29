@@ -1,0 +1,41 @@
+● REST - REpresentational State Transfer
+  - 웹 상에서 데이터를 주고 받고 처리하는 방법을 제시한 아키텍쳐
+
+● REST API : REST를 구현한 서비스
+
+● RESTful : Rest를 잘 준수한, 따르고 있는
+
+● REST 장점
+1. client/server 분리된 개발, 운영
+2. HTTP 프로토콜(기존인프라재사용)
+3. stateless
+
+● REST 구성요소
+1. 자원(Data)
+  - 식별: URI(URL) 
+
+  ※ 작성 가이드:
+    1. 동사지양, 명사지향(복수지향)
+    2. 계층적 표현
+    3. 마지막/사용 x
+    4. 확장자 사용
+
+2. 행위(작업)
+  - 메소드(HTTP 메소드), GET(조회), POST(등록), PUT(수정), DELETE(삭제), PATCH(부분 수정)
+
+3. 표현(처리 결과)
+  - 표준화된 포맷(JSON,XML,Text<plain,CSV,TSV>)
+  - 상태코드(optional)
+
+
+● Spring과 REST
+1. 포맷팅된 data -> <- 객체 : 메시지 컨버터
+2. 컨트롤러메소드(@RequestBody 객체) {
+      return 처리결과;
+}
+@RestController = @Controller + @ResponseBody
+3. Get Mapping, Post Mapping, PutMapping
+4. 자원식별 URL /고정/{가변적}
+    가변적 : @PathVariable
+
+
