@@ -1,0 +1,9 @@
+.td_a{
+  text-decoration: none !important;
+  color: rgb(78, 52, 52);
+}
+.td_a:hover{
+  color: rgb(82, 150, 240);
+  font-weight: 600;
+  font-size: 20px;
+}
