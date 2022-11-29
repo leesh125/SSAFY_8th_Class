@@ -1,8 +1,0 @@
-● JDBC - Java DataBase Connectivity
-
-● DB 연동
-1. Driver-class 로딩
-2. Connection 수정
-3. Statement 통로 생성
-4. SQL 실행
-5. select문 인 경우, 결과집합 처리
