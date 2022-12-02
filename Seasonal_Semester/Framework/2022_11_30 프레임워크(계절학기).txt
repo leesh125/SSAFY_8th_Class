@@ -1,0 +1,45 @@
+● Framework
+  - 웹 어플리케이션을 개발하기 위해서는 기본 기능과 많은 기능을, 설계 작성해야 한다
+    하지만 기본적인 공통 구조를 제공한다면 개발자는 웹 어플리케이션 기능 자체 개발에만
+    신경쓰면 되기 때문에 생산성이 높아진다
+  - 개발자 입장에서는 완성된 구조에 자신이 맡은 코드만 개발해서 넣어주면 되기 때문에
+    개발 시간을 단축할 수 있다.
+
+● Spring Framework의 특징
+  - POJO 방식의 프레임워크
+
+  - 의존성 주입을 통한 객체관계 구성 
+    - 프레임워크 내부에서 사용되는 객체간 의존성이 존재할 경우, 개발자는 의존성에 관련한 설정만 해주면 
+       실제 의존성 생성은 프레임워크가 담당
+
+  - 관점지향 프로그래밍(AOP)
+    - 트랜잭션, 로깅 등 여러 모듈에서 공통적으로 사용하는 기능에 대해서 별도로 분리하여 작성, 관리할 수 있는 기능을 제공
+
+  - 제어 역전
+    - 제어 역전을 통해 객체 및 프로세스의 제어를 프레임워크가 담당
+       필요에 따라 개발자의 코드를 호출한다.
+
+  - 높은 확장성과 다양한 라이브러리 지원
+
+● Spring Web MVC
+  - Servlet API를 기반으로 구축된 웹프레임워크
+  - DispatcherServlet(FrontController)를 중심으로 디자인 되었으며, View Resolver, Handler Mapping, Controller와 같은
+    객체와 함께 요청을 처리하도록 구성되어 있다.
+
+● Spring Web MVC - 요청 처리 흐름
+  1. 클라이언트 요청이 들어오면 DispatcherServlet이 받는다.
+  2. HandlerMapping이 어떤 Controller가 요청을 처리할지 결정한다.
+  3. DispatcherServlet은 Controller에 요청을 전달
+  4. Controller는 요청을 처리한다.
+  5. 결과(요청처리를 위한 data, 결과를 벼우줄 view의 이름)를 ModelAndView에 담아 반환
+  6. ViewResolver에 의해서 실제 결과를 처리할 View를 결정하고 반한
+  7. 결과를 처리할 View에 ModelAndView를 전달
+  8. DispatcherServlet은 View가 만들어낸 결과를 응답
+
+● Reflection
+  - 동적으로 클래스 정보에 접근해서 객체 생성, 메서드 실행등을 처리
+  
+● Annotation
+  - 클래스, 메서드, 변수 등에 추가적인 데이터를 붙이는 방식(Meta Data)
+  - XML을 대용하는 설정 파일로 사용
+  - 동적으로 클래스나 메서드에 필요한 메타 데이터를 리플랙션 api를 이용하여 사용하는 방식
